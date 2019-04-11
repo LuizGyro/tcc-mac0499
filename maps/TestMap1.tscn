@@ -27,5 +27,5 @@ position = Vector2( 400, 300 )
 [node name="Elements" type="Node2D" parent="."]
 
 [node name="RedBrother" parent="Elements" instance=ExtResource( 3 )]
-position = Vector2( 278.879, 55.2358 )
+position = Vector2( 300, 50 )
 
