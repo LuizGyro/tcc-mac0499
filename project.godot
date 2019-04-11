@@ -16,6 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="TCC-MAC0499"
+run/main_scene="res://maps/TestMap1.tscn"
 config/icon="res://icon.png"
 
 [display]
@@ -80,13 +81,9 @@ ui_end={
 }
 touch={
 "deadzone": 0.5,
-"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
-
-[input_devices]
-
-pointing/emulate_touch_from_mouse=true
 
 [layer_names]
 
