@@ -1,10 +1,13 @@
 [gd_scene format=2]
 
-[node name="BaseElement" type="Node2D"]
+[node name="BaseElement" type="StaticBody2D"]
 
 [node name="Sprite" type="Sprite" parent="."]
 
+[node name="CollisionBox" type="CollisionShape2D" parent="."]
+
 [node name="InteractionBox" type="Area2D" parent="."]
+editor/display_folded = true
 collision_layer = 3
 collision_mask = 3
 

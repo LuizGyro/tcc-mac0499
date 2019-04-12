@@ -1,10 +1,10 @@
-extends Node2D
+extends KinematicBody2D
 
-const MAX_SPEED = 5
+const MAX_SPEED = 200
 const ACCEL = 1.05
 
 var moving = false
-var speed = Vector2(1, 1)
+var speed = Vector2(100, 100)
 
 func _ready():
 	set_process_input(true)
@@ -26,7 +26,7 @@ func _input(event):
 		
 	elif event.is_action_released("touch"):
 		moving = false
-		speed = Vector2(1, 1)
+		speed = Vector2(100, 100)
 		$AnimationPlayer.play("Idle")
 		
 func move_to(pos):
@@ -34,7 +34,7 @@ func move_to(pos):
 		var direction = (pos - self.get_global_transform_with_canvas().origin).normalized()
 		set_sprite_and_interaction_direction(direction)
 		speed = (speed * ACCEL).clamped(MAX_SPEED)
-		self.position += direction * speed
+		move_and_slide(direction * speed)
 
 func set_sprite_and_interaction_direction(direction):
 	if (direction.x > 0):

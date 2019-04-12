@@ -19,11 +19,18 @@ config/name="TCC-MAC0499"
 run/main_scene="res://maps/TestMap1.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Global="*res://autoloads/global.gd"
+
 [display]
 
-window/size/width=800
+window/size/width=1920
+window/size/height=1080
 window/size/resizable=false
 window/size/fullscreen=true
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 
 [input]
 
