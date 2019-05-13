@@ -119,11 +119,11 @@ func clicked_on(object):
 ##############################################################################################
 
 func determine_gamepad_movement(direction):
-	if (direction != Vector2(0, 0)):
-		virtual_gamepad_direction += direction
-		print(virtual_gamepad_direction)
+	virtual_gamepad_direction += direction
+	if (virtual_gamepad_direction != Vector2(0, 0)):
+		$AnimationPlayer.play("Move")
 	else:
-		virtual_gamepad_direction = direction
+		$AnimationPlayer.play("Idle")
 	
 func move_to_absolute(pos):
 	var direction = (pos).normalized()

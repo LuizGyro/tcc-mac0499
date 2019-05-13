@@ -16,6 +16,7 @@ script = ExtResource( 1 )
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Directions" type="Control" parent="CanvasLayer"]
+visible = false
 modulate = Color( 1, 1, 1, 0.490196 )
 margin_left = 340.0
 margin_top = -80.0
@@ -44,6 +45,7 @@ normal = ExtResource( 5 )
 passby_press = true
 
 [node name="Confirm" type="TextureButton" parent="CanvasLayer"]
+visible = false
 modulate = Color( 1, 1, 1, 0.490196 )
 margin_left = 35.0
 margin_top = 735.0

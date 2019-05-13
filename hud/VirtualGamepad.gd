@@ -13,7 +13,8 @@ signal down_released
 func _ready():
 	# Shown by default. Let it be hidden by independent nodes if they so desire.
 	if Global.control_mode == Global.ControlModes.virtual_gamepad:
-		show()
+		$CanvasLayer/Directions.show()
+		$CanvasLayer/Confirm.show()
 
 
 func _on_Up_pressed():
