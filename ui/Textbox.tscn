@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://ui/Textbox.gd" type="Script" id=1]
+
+[node name="Textbox" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="BoxOut" type="ColorRect" parent="CanvasLayer"]
+margin_left = 295.0
+margin_top = 670.0
+margin_right = 1625.0
+margin_bottom = 1040.0
+color = Color( 0.617474, 0.334534, 0.792969, 0.313726 )
+
+[node name="BoxIn" type="ColorRect" parent="CanvasLayer"]
+margin_left = 320.0
+margin_top = 695.0
+margin_right = 1600.0
+margin_bottom = 1015.0
+color = Color( 0, 0, 0, 0.313726 )
+
