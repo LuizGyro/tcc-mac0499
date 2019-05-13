@@ -14,49 +14,46 @@ anchor_bottom = 1.0
 script = ExtResource( 1 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = 0
 
 [node name="Directions" type="Control" parent="CanvasLayer"]
 modulate = Color( 1, 1, 1, 0.490196 )
-margin_left = 1130.0
-margin_top = 500.0
-margin_right = 1170.0
-margin_bottom = 540.0
+margin_left = 380.0
+margin_top = -80.0
+margin_right = 420.0
+margin_bottom = -40.0
+rect_scale = Vector2( 2, 2 )
 
-[node name="Up" type="TextureButton" parent="CanvasLayer/Directions"]
-margin_left = 640.0
-margin_top = 396.0
-margin_right = 701.0
-margin_bottom = 472.0
-texture_normal = ExtResource( 2 )
+[node name="Up" type="TouchScreenButton" parent="CanvasLayer/Directions"]
+position = Vector2( 640, 395 )
+normal = ExtResource( 2 )
 
-[node name="Right" type="TextureButton" parent="CanvasLayer/Directions"]
-margin_left = 676.0
-margin_top = 450.0
-margin_right = 751.0
-margin_bottom = 526.0
-texture_normal = ExtResource( 3 )
+[node name="Right" type="TouchScreenButton" parent="CanvasLayer/Directions"]
+position = Vector2( 676, 450 )
+normal = ExtResource( 3 )
 
-[node name="Left" type="TextureButton" parent="CanvasLayer/Directions"]
-margin_left = 590.0
-margin_top = 450.0
-margin_right = 666.0
-margin_bottom = 526.0
-texture_normal = ExtResource( 4 )
+[node name="Left" type="TouchScreenButton" parent="CanvasLayer/Directions"]
+position = Vector2( 590, 450 )
+normal = ExtResource( 4 )
 
-[node name="Down" type="TextureButton" parent="CanvasLayer/Directions"]
-margin_left = 640.0
-margin_top = 490.0
-margin_right = 701.0
-margin_bottom = 566.0
-texture_normal = ExtResource( 5 )
+[node name="Down" type="TouchScreenButton" parent="CanvasLayer/Directions"]
+position = Vector2( 640, 490 )
+normal = ExtResource( 5 )
 
 [node name="Confirm" type="TextureButton" parent="CanvasLayer"]
 modulate = Color( 1, 1, 1, 0.490196 )
-margin_left = 50.0
-margin_top = 900.0
-margin_right = 210.0
-margin_bottom = 1060.0
+margin_left = 35.0
+margin_top = 735.0
+margin_right = 195.0
+margin_bottom = 895.0
+rect_scale = Vector2( 2, 2 )
 texture_normal = ExtResource( 6 )
 
 [connection signal="pressed" from="CanvasLayer/Directions/Up" to="." method="_on_Up_pressed"]
+[connection signal="released" from="CanvasLayer/Directions/Up" to="." method="_on_button_released"]
+[connection signal="pressed" from="CanvasLayer/Directions/Right" to="." method="_on_Right_pressed"]
+[connection signal="released" from="CanvasLayer/Directions/Right" to="." method="_on_button_released"]
+[connection signal="pressed" from="CanvasLayer/Directions/Left" to="." method="_on_Left_pressed"]
+[connection signal="released" from="CanvasLayer/Directions/Left" to="." method="_on_button_released"]
+[connection signal="pressed" from="CanvasLayer/Directions/Down" to="." method="_on_Down_pressed"]
+[connection signal="released" from="CanvasLayer/Directions/Down" to="." method="_on_button_released"]
+[connection signal="button_down" from="CanvasLayer/Confirm" to="." method="_on_Confirm_pressed"]

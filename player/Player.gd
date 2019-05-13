@@ -6,16 +6,33 @@ const ACCEL = 1.05
 var moving = false
 var speed = Vector2(100, 100)
 
+var virtual_gamepad_direction = Vector2(0, 0)
+
 func _ready():
-	set_process_input(true)
-	set_physics_process(true)
+	if (Global.control_mode == Global.ControlModes.direct):
+		set_process_input(true)
+	elif (Global.control_mode == Global.ControlModes.virtual_gamepad):
+		set_process_input(false)
+		VirtualGamepad.connect("up_pressed", self, "determine_gamepad_movement", [Vector2(0, -1)])
+		VirtualGamepad.connect("down_pressed", self, "determine_gamepad_movement", [Vector2(0, 1)])
+		VirtualGamepad.connect("left_pressed", self, "determine_gamepad_movement", [Vector2(-1, 0)])
+		VirtualGamepad.connect("right_pressed", self, "determine_gamepad_movement", [Vector2(1, 0)])
+		VirtualGamepad.connect("confirm_pressed", self, "determine_and_trigger_interaction")
+		VirtualGamepad.connect("direction_released", self, "determine_gamepad_movement", [Vector2(0, 0)])
+		
 
 func _physics_process(delta):
-	if moving:
+	if Global.control_mode == Global.ControlModes.direct and moving:
 		move_to(get_viewport().get_mouse_position())
+	elif Global.control_mode == Global.ControlModes.virtual_gamepad and virtual_gamepad_direction != Vector2(0, 0):
+		move_to_absolute(virtual_gamepad_direction)
+		
+##############################################################################################
+###################################### Touch Controls ######################################
+##############################################################################################
 
 func _input(event):
-	
+
 	if event.is_action_pressed("touch"):
 		# May cause problems if collision layers/masks are set incorrectly, or multiple objects are here
 		if ($InteractionBox.get_overlapping_areas() != [] and clicked_on($InteractionBox.get_overlapping_areas()[0].get_parent())):
@@ -23,7 +40,7 @@ func _input(event):
 		else:
 			moving = true
 			$AnimationPlayer.play("Move")
-		
+
 	elif event.is_action_released("touch"):
 		moving = false
 		speed = Vector2(100, 100)
@@ -92,4 +109,25 @@ func clicked_on(object):
 #	print(str("min_x: ", min_x, " min_y: ", min_y, " max_x: ", max_x, " max_y: ", max_y))
 
 	if (mouse_pos.x > min_x and mouse_pos.y > min_y and mouse_pos.x < max_x and mouse_pos.y < max_y):
-		return true 
+		return true
+
+##############################################################################################
+###################################### Gamepad Controls ######################################
+##############################################################################################
+
+func determine_gamepad_movement(direction):
+	if (direction != Vector2(0, 0)):
+		virtual_gamepad_direction += direction
+		print(virtual_gamepad_direction)
+	else:
+		virtual_gamepad_direction = direction
+	
+func move_to_absolute(pos):
+	var direction = (pos).normalized()
+	set_sprite_and_interaction_direction(direction)
+	speed = (speed * ACCEL).clamped(MAX_SPEED)
+	move_and_slide(direction * speed)
+
+func determine_and_trigger_interaction():
+	if ($InteractionBox.get_overlapping_areas() != []):
+		$InteractionBox.get_overlapping_areas()[0].get_parent().interact()
