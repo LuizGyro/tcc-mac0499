@@ -18,7 +18,10 @@ func _ready():
 		VirtualGamepad.connect("left_pressed", self, "determine_gamepad_movement", [Vector2(-1, 0)])
 		VirtualGamepad.connect("right_pressed", self, "determine_gamepad_movement", [Vector2(1, 0)])
 		VirtualGamepad.connect("confirm_pressed", self, "determine_and_trigger_interaction")
-		VirtualGamepad.connect("direction_released", self, "determine_gamepad_movement", [Vector2(0, 0)])
+		VirtualGamepad.connect("up_released", self, "determine_gamepad_movement", [Vector2(0, 1)])
+		VirtualGamepad.connect("down_released", self, "determine_gamepad_movement", [Vector2(0, -1)])
+		VirtualGamepad.connect("left_released", self, "determine_gamepad_movement", [Vector2(1, 0)])
+		VirtualGamepad.connect("right_released", self, "determine_gamepad_movement", [Vector2(-1, 0)])
 		
 
 func _physics_process(delta):

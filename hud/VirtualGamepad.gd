@@ -5,7 +5,10 @@ signal left_pressed
 signal right_pressed
 signal down_pressed
 signal confirm_pressed
-signal direction_released
+signal up_released
+signal left_released
+signal right_released
+signal down_released
 
 func _ready():
 	# Shown by default. Let it be hidden by independent nodes if they so desire.
@@ -33,5 +36,18 @@ func _on_Confirm_pressed():
 	emit_signal("confirm_pressed")
 
 
-func _on_button_released():
-	emit_signal("direction_released")
+func _on_Up_released():
+	emit_signal("up_released")
+
+
+func _on_Right_released():
+	emit_signal("right_released")
+
+
+func _on_Left_released():
+	emit_signal("left_released")
+
+
+func _on_Down_released():
+	emit_signal("down_released")
+

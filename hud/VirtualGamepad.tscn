@@ -26,18 +26,22 @@ rect_scale = Vector2( 2, 2 )
 [node name="Up" type="TouchScreenButton" parent="CanvasLayer/Directions"]
 position = Vector2( 640, 395 )
 normal = ExtResource( 2 )
+passby_press = true
 
 [node name="Right" type="TouchScreenButton" parent="CanvasLayer/Directions"]
 position = Vector2( 676, 450 )
 normal = ExtResource( 3 )
+passby_press = true
 
 [node name="Left" type="TouchScreenButton" parent="CanvasLayer/Directions"]
 position = Vector2( 590, 450 )
 normal = ExtResource( 4 )
+passby_press = true
 
 [node name="Down" type="TouchScreenButton" parent="CanvasLayer/Directions"]
 position = Vector2( 640, 490 )
 normal = ExtResource( 5 )
+passby_press = true
 
 [node name="Confirm" type="TextureButton" parent="CanvasLayer"]
 modulate = Color( 1, 1, 1, 0.490196 )
@@ -49,11 +53,11 @@ rect_scale = Vector2( 2, 2 )
 texture_normal = ExtResource( 6 )
 
 [connection signal="pressed" from="CanvasLayer/Directions/Up" to="." method="_on_Up_pressed"]
-[connection signal="released" from="CanvasLayer/Directions/Up" to="." method="_on_button_released"]
+[connection signal="released" from="CanvasLayer/Directions/Up" to="." method="_on_Up_released"]
 [connection signal="pressed" from="CanvasLayer/Directions/Right" to="." method="_on_Right_pressed"]
-[connection signal="released" from="CanvasLayer/Directions/Right" to="." method="_on_button_released"]
+[connection signal="released" from="CanvasLayer/Directions/Right" to="." method="_on_Right_released"]
 [connection signal="pressed" from="CanvasLayer/Directions/Left" to="." method="_on_Left_pressed"]
-[connection signal="released" from="CanvasLayer/Directions/Left" to="." method="_on_button_released"]
+[connection signal="released" from="CanvasLayer/Directions/Left" to="." method="_on_Left_released"]
 [connection signal="pressed" from="CanvasLayer/Directions/Down" to="." method="_on_Down_pressed"]
-[connection signal="released" from="CanvasLayer/Directions/Down" to="." method="_on_button_released"]
+[connection signal="released" from="CanvasLayer/Directions/Down" to="." method="_on_Down_released"]
 [connection signal="button_down" from="CanvasLayer/Confirm" to="." method="_on_Confirm_pressed"]
