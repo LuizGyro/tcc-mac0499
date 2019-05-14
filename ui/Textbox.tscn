@@ -96,13 +96,16 @@ custom_fonts/font = SubResource( 1 )
 text = ">"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Arrow"]
-autoplay = "Blink"
 anims/Blink = SubResource( 3 )
 
 [node name="TextTimer" type="Timer" parent="."]
-wait_time = 0.3
+wait_time = 0.05
 one_shot = true
 
 [node name="SkipTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="NextTimer" type="Timer" parent="."]
+wait_time = 0.5
 one_shot = true
 

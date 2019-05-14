@@ -3,13 +3,17 @@ extends Control
 const sample_text = ["Oi, meu nome é Haxixe. Você quer ser meu amiguinho? Eu adoro comer pastel. E jogar Smash. Venha ser meu amiguinho!", "É isso ai galera, chegamos na terça-feira."]
 
 var player_action = false
+var waiting_next = false
 
 func _ready():
 	set_process_input(true)
+	show_text(sample_text[0])
 
 func _input(event):
 	if (event.is_action("touch")):
 		player_action = true
+		if (waiting_next):
+			$NextTimer.start()
 
 # Make any customizations here: load portrait, change font, change
 # textbox color, etc.
@@ -22,19 +26,23 @@ func prepare():
 func show_text(string):
 	var text_length = string.length()
 	for c in text_length:
-		$Text.set_text(string.substr(0, c))
+		$CanvasLayer/Text.set_text(string.substr(0, c))
+		$TextTimer.start()
 		yield($TextTimer, "timeout")
 		if player_action:
 			break
 	
 	if player_action:
-		$Text.set_text(string)
-		yield($TextTimer, "timeout")
+		$CanvasLayer/Text.set_text(string)
+		$SkipTimer.start()
+		yield($SkipTimer, "timeout")
 	
 	player_action = false
 	$CanvasLayer/Arrow/AnimationPlayer.play("Blink")
-	while(!player_action):
-		pass
+	# Only activated when waiting for next text
+	waiting_next = true
+	yield($NextTimer, "timeout")
+	$CanvasLayer/Arrow/AnimationPlayer.stop(true)
 	$CanvasLayer/Arrow.hide()
 	
 	# Possibly play fadeout animation here
