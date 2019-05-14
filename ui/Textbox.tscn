@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://ui/Textbox.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/Semi-Coder-Regular.otf" type="DynamicFontData" id=2]
@@ -10,6 +10,23 @@ font_data = ExtResource( 2 )
 [sub_resource type="DynamicFont" id=1]
 size = 40
 font_data = ExtResource( 2 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "Blink"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
 
 [node name="Textbox" type="Control"]
 anchor_right = 1.0
@@ -69,12 +86,23 @@ autowrap = true
 clip_text = true
 
 [node name="Arrow" type="Label" parent="CanvasLayer"]
-margin_left = 1545.0
-margin_top = 931.0
-margin_right = 1570.0
-margin_bottom = 990.0
+visible = false
+margin_left = 1590.0
+margin_top = 980.0
+margin_right = 1615.0
+margin_bottom = 1039.0
+rect_rotation = 90.0
 custom_fonts/font = SubResource( 1 )
 text = ">"
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Arrow"]
+autoplay = "Blink"
+anims/Blink = SubResource( 3 )
+
 [node name="TextTimer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+[node name="SkipTimer" type="Timer" parent="."]
+one_shot = true
 
