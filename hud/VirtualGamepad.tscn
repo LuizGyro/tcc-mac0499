@@ -44,15 +44,12 @@ position = Vector2( 640, 490 )
 normal = ExtResource( 5 )
 passby_press = true
 
-[node name="Confirm" type="TextureButton" parent="CanvasLayer"]
+[node name="Confirm" type="TouchScreenButton" parent="CanvasLayer"]
 visible = false
 modulate = Color( 1, 1, 1, 0.490196 )
-margin_left = 35.0
-margin_top = 735.0
-margin_right = 195.0
-margin_bottom = 895.0
-rect_scale = Vector2( 2, 2 )
-texture_normal = ExtResource( 6 )
+position = Vector2( 35, 735 )
+scale = Vector2( 2, 2 )
+normal = ExtResource( 6 )
 
 [connection signal="pressed" from="CanvasLayer/Directions/Up" to="." method="_on_Up_pressed"]
 [connection signal="released" from="CanvasLayer/Directions/Up" to="." method="_on_Up_released"]
@@ -62,4 +59,4 @@ texture_normal = ExtResource( 6 )
 [connection signal="released" from="CanvasLayer/Directions/Left" to="." method="_on_Left_released"]
 [connection signal="pressed" from="CanvasLayer/Directions/Down" to="." method="_on_Down_pressed"]
 [connection signal="released" from="CanvasLayer/Directions/Down" to="." method="_on_Down_released"]
-[connection signal="button_down" from="CanvasLayer/Confirm" to="." method="_on_Confirm_pressed"]
+[connection signal="pressed" from="CanvasLayer/Confirm" to="." method="_on_Confirm_pressed"]

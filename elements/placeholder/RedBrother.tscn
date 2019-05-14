@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://elements/placeholder/RedBrother.gd" type="Script" id=1]
 [ext_resource path="res://assets/placeholder/redbrother.png" type="Texture" id=2]
+[ext_resource path="res://ui/Textbox.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 20, 35 )
@@ -26,6 +27,12 @@ collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionBox"]
 shape = SubResource( 2 )
+
+[node name="Textbox" parent="." instance=ExtResource( 3 )]
+margin_left = -32.1494
+margin_top = -52.4405
+margin_right = -32.1494
+margin_bottom = -52.4405
 
 [node name="Interaction" type="Label" parent="."]
 editor/display_folded = true

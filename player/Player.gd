@@ -13,15 +13,20 @@ func _ready():
 		set_process_input(true)
 	elif (Global.control_mode == Global.ControlModes.virtual_gamepad):
 		set_process_input(false)
-		VirtualGamepad.connect("up_pressed", self, "determine_gamepad_movement", [Vector2(0, -1)])
-		VirtualGamepad.connect("down_pressed", self, "determine_gamepad_movement", [Vector2(0, 1)])
-		VirtualGamepad.connect("left_pressed", self, "determine_gamepad_movement", [Vector2(-1, 0)])
-		VirtualGamepad.connect("right_pressed", self, "determine_gamepad_movement", [Vector2(1, 0)])
-		VirtualGamepad.connect("confirm_pressed", self, "determine_and_trigger_interaction")
-		VirtualGamepad.connect("up_released", self, "determine_gamepad_movement", [Vector2(0, 1)])
-		VirtualGamepad.connect("down_released", self, "determine_gamepad_movement", [Vector2(0, -1)])
-		VirtualGamepad.connect("left_released", self, "determine_gamepad_movement", [Vector2(1, 0)])
-		VirtualGamepad.connect("right_released", self, "determine_gamepad_movement", [Vector2(-1, 0)])
+		var status = []
+		status.append(VirtualGamepad.connect("up_pressed", self, "determine_gamepad_movement", [Vector2(0, -1)]))
+		status.append(VirtualGamepad.connect("down_pressed", self, "determine_gamepad_movement", [Vector2(0, 1)]))
+		status.append(VirtualGamepad.connect("left_pressed", self, "determine_gamepad_movement", [Vector2(-1, 0)]))
+		status.append(VirtualGamepad.connect("right_pressed", self, "determine_gamepad_movement", [Vector2(1, 0)]))
+		status.append(VirtualGamepad.connect("confirm_pressed", self, "determine_and_trigger_interaction"))
+		status.append(VirtualGamepad.connect("up_released", self, "determine_gamepad_movement", [Vector2(0, 1)]))
+		status.append(VirtualGamepad.connect("down_released", self, "determine_gamepad_movement", [Vector2(0, -1)]))
+		status.append(VirtualGamepad.connect("left_released", self, "determine_gamepad_movement", [Vector2(1, 0)]))
+		status.append(VirtualGamepad.connect("right_released", self, "determine_gamepad_movement", [Vector2(-1, 0)]))
+		
+		for code in status:
+			if code != 0:
+				print("Something went wrong with signal connection in Player!")
 		
 
 func _physics_process(delta):
@@ -39,7 +44,10 @@ func _input(event):
 	if event.is_action_pressed("touch"):
 		# May cause problems if collision layers/masks are set incorrectly, or multiple objects are here
 		if ($InteractionBox.get_overlapping_areas() != [] and clicked_on($InteractionBox.get_overlapping_areas()[0].get_parent())):
-			$InteractionBox.get_overlapping_areas()[0].get_parent().interact()
+			var element = $InteractionBox.get_overlapping_areas()[0].get_parent()
+			element.interact(self)
+			yield(element, "interaction_finished")
+		
 		else:
 			moving = true
 			$AnimationPlayer.play("Move")
@@ -133,4 +141,6 @@ func move_to_absolute(pos):
 
 func determine_and_trigger_interaction():
 	if ($InteractionBox.get_overlapping_areas() != []):
-		$InteractionBox.get_overlapping_areas()[0].get_parent().interact()
+		var element = $InteractionBox.get_overlapping_areas()[0].get_parent()
+		element.interact(self)
+		yield(element, "interaction_finished")
