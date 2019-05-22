@@ -50,12 +50,12 @@ func _input(event):
 		
 		else:
 			moving = true
-			$AnimationPlayer.play("Move")
+			$Sprite.set_animation("walk")
 
 	elif event.is_action_released("touch"):
 		moving = false
 		speed = Vector2(100, 100)
-		$AnimationPlayer.play("Idle")
+		$Sprite.set_animation("idle")
 		
 func move_to(pos):
 	if (pos.distance_to(self.get_global_transform_with_canvas().origin) > 10):
@@ -65,41 +65,36 @@ func move_to(pos):
 		move_and_slide(direction * speed)
 
 func set_sprite_and_interaction_direction(direction):
+	var scale = $Sprite.scale
 	if (direction.x > 0):
+		$Sprite.set_scale(Vector2(abs(scale.x), scale.y))
 		if (direction.y < 0):
 			if (abs(direction.x) > abs(direction.y)):
-				$Sprite.set_texture(load("res://assets/placeholder/playerright.png"))
 				$InteractionBox.rotation_degrees = 270
 			else:
-				$Sprite.set_texture(load("res://assets/placeholder/playerback.png"))
 				$InteractionBox.rotation_degrees = 180
-				
+
 		else:
 			if (abs(direction.x) > abs(direction.y)):
-				$Sprite.set_texture(load("res://assets/placeholder/playerright.png"))
 				$InteractionBox.rotation_degrees = 270
-				
+
 			else:
-				$Sprite.set_texture(load("res://assets/placeholder/playerfront.png"))
 				$InteractionBox.rotation_degrees = 0
-				
+
 	else:
+		$Sprite.set_scale(Vector2(-abs(scale.x), scale.y))
 		if (direction.y < 0):
 			if (abs(direction.x) > abs(direction.y)):
-				$Sprite.set_texture(load("res://assets/placeholder/playerleft.png"))
 				$InteractionBox.rotation_degrees = 90
-				
+
 			else:
-				$Sprite.set_texture(load("res://assets/placeholder/playerback.png"))
 				$InteractionBox.rotation_degrees = 180
-				
+
 		else:
 			if (abs(direction.x) > abs(direction.y)):
-				$Sprite.set_texture(load("res://assets/placeholder/playerleft.png"))
 				$InteractionBox.rotation_degrees = 90
-				
+
 			else:
-				$Sprite.set_texture(load("res://assets/placeholder/playerfront.png"))
 				$InteractionBox.rotation_degrees = 0
 				
 func clicked_on(object):
@@ -129,9 +124,9 @@ func clicked_on(object):
 func determine_gamepad_movement(direction):
 	virtual_gamepad_direction += direction
 	if (virtual_gamepad_direction != Vector2(0, 0)):
-		$AnimationPlayer.play("Move")
+		$Sprite.set_animation("walk")
 	else:
-		$AnimationPlayer.play("Idle")
+		$Sprite.set_animation("idle")
 	
 func move_to_absolute(pos):
 	var direction = (pos).normalized()

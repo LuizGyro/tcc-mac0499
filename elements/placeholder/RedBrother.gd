@@ -8,8 +8,7 @@ func _ready():
 	size = $Sprite.texture.get_size()
 
 func interact(player):
-	print("eae")
-	$Textbox.prepare_and_emit_text("Red Brother", "You did it.")
+	$Textbox.prepare_and_emit_text("Red Brother", ["You did it.", "Very nice."])
 	player.set_process_input(false)
 	yield($Textbox, "textbox_done")
 	player.set_process_input(true)

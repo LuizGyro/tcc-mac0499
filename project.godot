@@ -33,6 +33,29 @@ window/size/fullscreen=true
 window/stretch/mode="2d"
 window/stretch/aspect="keep_width"
 
+[importer_defaults]
+
+texture={
+"compress/bptc_ldr": 0,
+"compress/hdr_mode": 0,
+"compress/lossy_quality": 0.7,
+"compress/mode": 0,
+"compress/normal_map": 0,
+"detect_3d": true,
+"flags/anisotropic": false,
+"flags/filter": false,
+"flags/mipmaps": false,
+"flags/repeat": 0,
+"flags/srgb": 2,
+"process/HDR_as_SRGB": false,
+"process/fix_alpha_border": true,
+"process/invert_color": false,
+"process/premult_alpha": false,
+"size_limit": 0,
+"stream": false,
+"svg/scale": 1.0
+}
+
 [input]
 
 ui_accept={
@@ -105,6 +128,5 @@ pointing/emulate_touch_from_mouse=true
 [rendering]
 
 quality/2d/use_pixel_snap=true
-quality/shadows/filter_mode=0
 environment/default_clear_color=Color( 0.0392157, 0.0392157, 0.0392157, 1 )
 environment/default_environment="res://default_env.tres"

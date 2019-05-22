@@ -47,7 +47,8 @@ func prepare_and_emit_text(char_name, text, in_animation="slide_in", out_animati
 	yield($CanvasLayer/Boxes/AnimationPlayer, "animation_finished")
 	
 	emit_signal("textbox_done")
-	VirtualGamepad.enable()
+	if (Global.control_mode == Global.ControlModes.virtual_gamepad):
+		VirtualGamepad.enable()
 	
 # Show text on screen. Recieves single string.
 func show_text(string):
