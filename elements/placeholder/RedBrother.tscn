@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://elements/placeholder/RedBrother.gd" type="Script" id=1]
 [ext_resource path="res://assets/placeholder/redbrother.png" type="Texture" id=2]
 [ext_resource path="res://ui/Textbox.tscn" type="PackedScene" id=3]
+[ext_resource path="res://ui/ChoiceBox.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 20, 35 )
@@ -11,20 +12,17 @@ extents = Vector2( 20, 35 )
 extents = Vector2( 20, 35 )
 
 [node name="RedBrother" type="StaticBody2D"]
+scale = Vector2( 2, 2 )
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
 
 [node name="CollisionBox" type="CollisionShape2D" parent="."]
-scale = Vector2( 2, 2 )
 shape = SubResource( 1 )
 
 [node name="InteractionBox" type="Area2D" parent="."]
 editor/display_folded = true
-visible = false
-scale = Vector2( 2, 2 )
 collision_layer = 3
 collision_mask = 3
 
@@ -37,16 +35,5 @@ margin_top = -52.4405
 margin_right = -32.1494
 margin_bottom = -52.4405
 
-[node name="Interaction" type="Label" parent="."]
-editor/display_folded = true
-visible = false
-margin_left = -32.1494
-margin_top = -52.4405
-margin_right = 31.8506
-margin_bottom = -38.4405
-text = "You did it!"
-
-[node name="Timer" type="Timer" parent="Interaction"]
-wait_time = 2.0
-one_shot = true
+[node name="ChoiceBox" parent="." instance=ExtResource( 4 )]
 

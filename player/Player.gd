@@ -103,8 +103,11 @@ func clicked_on(object):
 	
 	var posx = absolute_object_position.x
 	var posy = absolute_object_position.y
-	var sizex = object.size.x
-	var sizey = object.size.y
+	var sizex = object.size.x * abs(object.scale.x)
+	var sizey = object.size.y * abs(object.scale.y)
+	print(sizex)
+	print(sizey)
+	
 	
 	var min_x = posx - (sizex/2)
 	var min_y = posy - (sizey/2)
