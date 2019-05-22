@@ -159,7 +159,6 @@ custom_colors/font_color = Color( 0.211765, 0.92549, 0.372549, 1 )
 custom_colors/font_color_pressed = Color( 0.027451, 0.976471, 0.239216, 1 )
 text = "Sim"
 flat = true
-clip_text = true
 
 [node name="Option2" type="Button" parent="CanvasLayer/Boxes"]
 margin_left = 1195.0
@@ -171,7 +170,6 @@ custom_colors/font_color = Color( 1, 0.184314, 0.184314, 1 )
 custom_colors/font_color_pressed = Color( 0.941176, 0.0431373, 0.0431373, 1 )
 text = "Não"
 flat = true
-clip_text = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Boxes"]
 anims/fade_in = SubResource( 2 )
