@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://ui/Textbox.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/Semi-Coder-Regular.otf" type="DynamicFontData" id=2]
@@ -84,6 +84,38 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 
+[sub_resource type="Animation" id=8]
+resource_name = "pop_in"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.0236853 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "pop_out"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.0236853 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
 [sub_resource type="Animation" id=6]
 length = 0.7
 tracks/0/type = "value"
@@ -124,22 +156,6 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( 0, 600 ) ]
-}
-
-[sub_resource type="Animation" id=8]
-resource_name = "stay"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0.0236853 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ) ]
 }
 
 [node name="Textbox" type="Control"]
@@ -219,9 +235,10 @@ anims/Blink = SubResource( 3 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Boxes"]
 anims/fade_in = SubResource( 4 )
 anims/fade_out = SubResource( 5 )
+anims/pop_in = SubResource( 8 )
+anims/pop_out = SubResource( 9 )
 anims/slide_in = SubResource( 6 )
 anims/slide_out = SubResource( 7 )
-anims/stay = SubResource( 8 )
 
 [node name="TextTimer" type="Timer" parent="."]
 wait_time = 0.05
