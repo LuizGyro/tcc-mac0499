@@ -1,7 +1,7 @@
 extends Control
 
 # Normalmente, o padrão é false
-var puzzle_solved = true
+var puzzle_solved = false
 
 # Essa função se liga ao SubmitButton, para que transicionemos
 # para a tela em que a solução é entregue. Esta pode ser filha
@@ -16,4 +16,5 @@ func submit_answer():
 # This function checks the requirements for sucess in the puzzle,
 # and returns true if they are met, and false oherwise
 func check_requirements():
-	pass
+	if $Block/Area2D.get_overlapping_areas().size() > 0:
+		puzzle_solved = true
