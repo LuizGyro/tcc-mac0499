@@ -17,7 +17,7 @@ _global_script_class_icons={
 
 config/name="TCC-MAC0499"
 run/main_scene="res://maps/TestMap1.tscn"
-config/icon="res://icon.png"
+config/icon="res://assets/characters/player/idle1.png"
 
 [autoload]
 
