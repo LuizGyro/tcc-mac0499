@@ -22,10 +22,11 @@ func transition_to_puzzle(o_scene, puzzle_name):
 	get_tree().get_root().remove_child(o_scene)
 	# Load puzzle scene here
 	# Testing
-	var puzzle_scene_path = "res://puzzles/PuzzleTest/PuzzleTest.tscn"
+	var puzzle_scene_path = "res://puzzles/TestPuzzle/TestPuzzle.tscn"
 	var p_scene = load(puzzle_scene_path)
-	puzzle_scene = p_scene
-	get_tree().get_root().add_child(p_scene)
+	var p_instance = p_scene.instance()
+	puzzle_scene = p_instance
+	get_tree().get_root().add_child(puzzle_scene)
 
 func transition_to_overworld():
 	get_tree().get_root().remove_child(puzzle_scene)
