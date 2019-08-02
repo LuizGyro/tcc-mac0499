@@ -9,6 +9,7 @@ const sample_text_multiple = ["Oi, meu nome é Haxixe. Você quer ser meu amigui
 
 var player_action = false
 var waiting_next = false
+var skippable = true
 
 func _input(event):
 	if (event.is_action("touch")):
@@ -20,7 +21,6 @@ func _input(event):
 func reset():
 	$CanvasLayer/Boxes/Name.set_text("")
 	$CanvasLayer/Boxes/Text.set_text("")
-	
 
 # Make any customizations here: load portrait, change font, change
 # textbox color, etc.
@@ -56,14 +56,14 @@ func show_text(string):
 	
 	# Done for show_multiple_text functionality
 	player_action = false
-	for c in text_length:
+	for c in text_length + 1:
 		$CanvasLayer/Boxes/Text.set_text(string.substr(0, c))
 		$TextTimer.start()
 		yield($TextTimer, "timeout")
-		if player_action:
+		if player_action and skippable:
 			break
 	
-	if player_action:
+	if player_action and skippable:
 		$CanvasLayer/Boxes/Text.set_text(string)
 		$SkipTimer.start()
 		yield($SkipTimer, "timeout")

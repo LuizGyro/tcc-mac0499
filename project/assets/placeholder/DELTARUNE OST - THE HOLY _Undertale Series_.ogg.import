@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/DELTARUNE OST - THE HOLY _Undertale Series_.ogg-1159b78a7428788a41ebd489602dc2ed.oggstr"
+
+[deps]
+
+source_file="res://assets/placeholder/DELTARUNE OST - THE HOLY _Undertale Series_.ogg"
+dest_files=[ "res://.import/DELTARUNE OST - THE HOLY _Undertale Series_.ogg-1159b78a7428788a41ebd489602dc2ed.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
