@@ -7,7 +7,11 @@ const intro_text = ["Você se lembra?",
 					"Você se lembra quem você era?"]
 
 func _ready():
+	$IntroTimer.start()
+	yield($IntroTimer, "timeout")
+	$BlackFade/AnimationPlayer.play_backwards("fade_out")
 	$BGM.play()
+	yield($BlackFade/AnimationPlayer, "animation_finished")
 	$Textbox.skippable = false
 	$Textbox.prepare_and_emit_text("", intro_text, "pop_in", "pop_out")
 	for child in $Textbox/CanvasLayer/Boxes.get_children():
