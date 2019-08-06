@@ -1,0 +1,3 @@
+A parte do jogo que será feita para o TCC irá somente até a dupla principal encontrar a estrada.
+
+A estrada poderia levar para um mapa-mundi linear, em que a dupla caminha entre áreas

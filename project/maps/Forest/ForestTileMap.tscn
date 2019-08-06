@@ -1,9 +1,15 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/placeholder/gfx/Overworld.png" type="Texture" id=1]
 
+[sub_resource type="ConvexPolygonShape2D" id=2]
+points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="ConvexPolygonShape2D" id=3]
+points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+
 [sub_resource type="TileSet" id=1]
-0/name = "Overworld.png 0"
+0/name = "AutoSandy.png 0"
 0/texture = ExtResource( 1 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
@@ -21,8 +27,8 @@
 0/occluder_offset = Vector2( 0, 0 )
 0/navigation_offset = Vector2( 0, 0 )
 0/shapes = [  ]
-0/z_index = 0
-1/name = "Overworld.png 1"
+0/z_index = -1
+1/name = "AutoWater"
 1/texture = ExtResource( 1 )
 1/tex_offset = Vector2( 0, 0 )
 1/modulate = Color( 1, 1, 1, 1 )
@@ -39,8 +45,188 @@
 1/autotile/z_index_map = [  ]
 1/occluder_offset = Vector2( 0, 0 )
 1/navigation_offset = Vector2( 0, 0 )
-1/shapes = [  ]
-1/z_index = 0
+1/shapes = [ {
+"autotile_coord": Vector2( 1, 1 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+1/z_index = -1
+2/name = "SingleGrass"
+2/texture = ExtResource( 1 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 0, 0, 16, 16 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shapes = [  ]
+2/z_index = -1
+3/name = "SingleFlower4"
+3/texture = ExtResource( 1 )
+3/tex_offset = Vector2( 0, 0 )
+3/modulate = Color( 1, 1, 1, 1 )
+3/region = Rect2( 48, 192, 16, 16 )
+3/tile_mode = 0
+3/occluder_offset = Vector2( 0, 0 )
+3/navigation_offset = Vector2( 0, 0 )
+3/shapes = [  ]
+3/z_index = -1
+4/name = "SingleFlower3"
+4/texture = ExtResource( 1 )
+4/tex_offset = Vector2( 0, 0 )
+4/modulate = Color( 1, 1, 1, 1 )
+4/region = Rect2( 32, 192, 16, 16 )
+4/tile_mode = 0
+4/occluder_offset = Vector2( 0, 0 )
+4/navigation_offset = Vector2( 0, 0 )
+4/shapes = [  ]
+4/z_index = -1
+5/name = "SingleFlower1"
+5/texture = ExtResource( 1 )
+5/tex_offset = Vector2( 0, 0 )
+5/modulate = Color( 1, 1, 1, 1 )
+5/region = Rect2( 0, 128, 16, 16 )
+5/tile_mode = 0
+5/occluder_offset = Vector2( 0, 0 )
+5/navigation_offset = Vector2( 0, 0 )
+5/shapes = [  ]
+5/z_index = -1
+6/name = "SingleFlower2"
+6/texture = ExtResource( 1 )
+6/tex_offset = Vector2( 0, 0 )
+6/modulate = Color( 1, 1, 1, 1 )
+6/region = Rect2( 16, 128, 16, 16 )
+6/tile_mode = 0
+6/occluder_offset = Vector2( 0, 0 )
+6/navigation_offset = Vector2( 0, 0 )
+6/shapes = [  ]
+6/z_index = -1
+7/name = "SingleBigBush"
+7/texture = ExtResource( 1 )
+7/tex_offset = Vector2( 0, 0 )
+7/modulate = Color( 1, 1, 1, 1 )
+7/region = Rect2( 80, 256, 32, 32 )
+7/tile_mode = 0
+7/occluder_offset = Vector2( 0, 0 )
+7/navigation_offset = Vector2( 0, 0 )
+7/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 3 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+7/z_index = 0
+8/name = "AutoDarkGrass"
+8/texture = ExtResource( 1 )
+8/tex_offset = Vector2( 0, 0 )
+8/modulate = Color( 1, 1, 1, 1 )
+8/region = Rect2( 224, 464, 80, 80 )
+8/tile_mode = 1
+8/autotile/bitmask_mode = 0
+8/autotile/bitmask_flags = [ Vector2( 0, 0 ), 256, Vector2( 0, 1 ), 260, Vector2( 0, 2 ), 4, Vector2( 0, 3 ), 69, Vector2( 0, 4 ), 321, Vector2( 1, 0 ), 320, Vector2( 1, 1 ), 325, Vector2( 1, 2 ), 5, Vector2( 1, 3 ), 261, Vector2( 1, 4 ), 324, Vector2( 2, 0 ), 64, Vector2( 2, 1 ), 65, Vector2( 2, 2 ), 1 ]
+8/autotile/icon_coordinate = Vector2( 1, 1 )
+8/autotile/tile_size = Vector2( 16, 16 )
+8/autotile/spacing = 0
+8/autotile/occluder_map = [  ]
+8/autotile/navpoly_map = [  ]
+8/autotile/priority_map = [  ]
+8/autotile/z_index_map = [  ]
+8/occluder_offset = Vector2( 0, 0 )
+8/navigation_offset = Vector2( 0, 0 )
+8/shapes = [  ]
+8/z_index = -1
+10/name = "SingleTrunk"
+10/texture = ExtResource( 1 )
+10/tex_offset = Vector2( 0, 0 )
+10/modulate = Color( 1, 1, 1, 1 )
+10/region = Rect2( 496, 48, 32, 32 )
+10/tile_mode = 0
+10/occluder_offset = Vector2( 0, 0 )
+10/navigation_offset = Vector2( 0, 0 )
+10/shapes = [  ]
+10/z_index = 0
+11/name = "SingleBigRock"
+11/texture = ExtResource( 1 )
+11/tex_offset = Vector2( 0, 0 )
+11/modulate = Color( 1, 1, 1, 1 )
+11/region = Rect2( 144, 176, 32, 32 )
+11/tile_mode = 0
+11/occluder_offset = Vector2( 0, 0 )
+11/navigation_offset = Vector2( 0, 0 )
+11/shapes = [  ]
+11/z_index = 0
+12/name = "SingleWaterRock"
+12/texture = ExtResource( 1 )
+12/tex_offset = Vector2( 0, 0 )
+12/modulate = Color( 1, 1, 1, 1 )
+12/region = Rect2( 176, 112, 32, 32 )
+12/tile_mode = 0
+12/occluder_offset = Vector2( 0, 0 )
+12/navigation_offset = Vector2( 0, 0 )
+12/shapes = [  ]
+12/z_index = 0
+13/name = "SingleWaterRock"
+13/texture = ExtResource( 1 )
+13/tex_offset = Vector2( 0, 0 )
+13/modulate = Color( 1, 1, 1, 1 )
+13/region = Rect2( 224, 160, 16, 16 )
+13/tile_mode = 0
+13/occluder_offset = Vector2( 0, 0 )
+13/navigation_offset = Vector2( 0, 0 )
+13/shapes = [  ]
+13/z_index = 0
+14/name = "SingleRock2"
+14/texture = ExtResource( 1 )
+14/tex_offset = Vector2( 0, 0 )
+14/modulate = Color( 1, 1, 1, 1 )
+14/region = Rect2( 112, 80, 16, 16 )
+14/tile_mode = 0
+14/occluder_offset = Vector2( 0, 0 )
+14/navigation_offset = Vector2( 0, 0 )
+14/shapes = [  ]
+14/z_index = -1
+15/name = "SingleRock3"
+15/texture = ExtResource( 1 )
+15/tex_offset = Vector2( 0, 0 )
+15/modulate = Color( 1, 1, 1, 1 )
+15/region = Rect2( 160, 80, 16, 16 )
+15/tile_mode = 0
+15/occluder_offset = Vector2( 0, 0 )
+15/navigation_offset = Vector2( 0, 0 )
+15/shapes = [  ]
+15/z_index = -1
+16/name = "SingleBush"
+16/texture = ExtResource( 1 )
+16/tex_offset = Vector2( 0, 0 )
+16/modulate = Color( 1, 1, 1, 1 )
+16/region = Rect2( 32, 224, 16, 16 )
+16/tile_mode = 0
+16/occluder_offset = Vector2( 0, 0 )
+16/navigation_offset = Vector2( 0, 0 )
+16/shapes = [  ]
+16/z_index = -1
+17/name = "AutoLightGrass"
+17/texture = ExtResource( 1 )
+17/tex_offset = Vector2( 0, 0 )
+17/modulate = Color( 1, 1, 1, 1 )
+17/region = Rect2( 112, 144, 32, 32 )
+17/tile_mode = 1
+17/autotile/bitmask_mode = 0
+17/autotile/bitmask_flags = [ Vector2( 0, 0 ), 325, Vector2( 0, 1 ), 325, Vector2( 1, 0 ), 325, Vector2( 1, 1 ), 325 ]
+17/autotile/icon_coordinate = Vector2( 0, 0 )
+17/autotile/tile_size = Vector2( 16, 16 )
+17/autotile/spacing = 0
+17/autotile/occluder_map = [  ]
+17/autotile/navpoly_map = [  ]
+17/autotile/priority_map = [ Vector3( 0, 0, 23 ), Vector3( 0, 1, 42 ), Vector3( 1, 0, 18 ), Vector3( 1, 1, 42 ) ]
+17/autotile/z_index_map = [  ]
+17/occluder_offset = Vector2( 0, 0 )
+17/navigation_offset = Vector2( 0, 0 )
+17/shapes = [  ]
+17/z_index = -1
 
 [node name="ForestTileMap" type="TileMap"]
 tile_set = SubResource( 1 )
