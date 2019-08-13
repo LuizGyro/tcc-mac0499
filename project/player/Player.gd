@@ -45,6 +45,8 @@ func _input(event):
 		# May cause problems if collision layers/masks are set incorrectly, or multiple objects are here
 		if ($InteractionBox.get_overlapping_areas() != [] and clicked_on($InteractionBox.get_overlapping_areas()[0].get_parent())):
 			var element = $InteractionBox.get_overlapping_areas()[0].get_parent()
+			while (!element.has_method("interact")):
+				element = element.get_parent()
 			element.interact(self)
 			yield(element, "interaction_finished")
 		

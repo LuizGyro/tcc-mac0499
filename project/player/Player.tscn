@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://player/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/characters/player/idle1.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://assets/characters/player/walk2.png" type="Texture" id=7]
 [ext_resource path="res://assets/characters/player/walk3.png" type="Texture" id=8]
 [ext_resource path="res://assets/characters/player/walk4.png" type="Texture" id=9]
+[ext_resource path="res://hud/CustomCamera.tscn" type="PackedScene" id=10]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -23,7 +24,7 @@ animations = [ {
 "speed": 15.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 20, 30 )
 
 [sub_resource type="RectangleShape2D" id=3]
@@ -37,13 +38,12 @@ script = ExtResource( 1 )
 scale = Vector2( 2.2, 2.2 )
 frames = SubResource( 1 )
 animation = "idle"
-frame = 2
 playing = true
 
 [node name="CollisionBox" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 10 )
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 2 )
 
 [node name="InteractionBox" type="Area2D" parent="."]
 editor/display_folded = true
@@ -53,4 +53,6 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionBox"]
 position = Vector2( 0, 30 )
 shape = SubResource( 3 )
+
+[node name="CustomCamera" parent="." instance=ExtResource( 10 )]
 
