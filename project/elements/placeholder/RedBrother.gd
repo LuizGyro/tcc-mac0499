@@ -5,7 +5,7 @@ onready var size
 signal interaction_finished
 
 func _ready():
-	size = $Sprite.texture.get_size()
+	size = $InteractionBox/CollisionShape2D.shape.extents
 
 func interact(player):
 	# Simple textbox example
@@ -13,7 +13,7 @@ func interact(player):
 	player.set_process_input(false)
 	yield($Textbox, "textbox_done")
 	# Simple choicebox example
-	$ChoiceBox.prepare_and_emit_options("I know", "Nah")
+	$ChoiceBox.prepare_and_emit_options("Yeah", "Nah")
 	var choice = yield($ChoiceBox, "choicebox_done")
 	if (choice == 1):
 		$Textbox.prepare_and_emit_text("Red Brother", ["Let's go then."])
