@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/placeholder/DELTARUNE OST - THE HOLY _Undertale Series_.ogg" type="AudioStream" id=2]
 [ext_resource path="res://ui/Textbox.tscn" type="PackedScene" id=3]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "fade_out"
 length = 3.5
 tracks/0/type = "value"
@@ -32,8 +32,7 @@ tracks/1/keys = {
 "values": [ 0.0, -80.0 ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "fade_out"
+[sub_resource type="Animation" id=2]
 length = 3.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:color")
@@ -70,13 +69,14 @@ stream = ExtResource( 2 )
 volume_db = -80.0
 
 [node name="BlackFade" type="ColorRect" parent="."]
+editor/display_folded = true
 margin_right = 1920.0
 margin_bottom = 1080.0
 mouse_filter = 2
 color = Color( 0.0352941, 0.0352941, 0.0352941, 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BlackFade"]
-anims/fade_out = SubResource( 2 )
+anims/fade_out = SubResource( 1 )
 
 [node name="WhiteFade" type="ColorRect" parent="."]
 editor/display_folded = true
@@ -86,10 +86,10 @@ mouse_filter = 2
 color = Color( 0.917647, 0.917647, 0.917647, 0 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="WhiteFade"]
-anims/fade_out = SubResource( 1 )
+anims/fade_out = SubResource( 2 )
 
 [node name="Textbox" parent="." instance=ExtResource( 3 )]
-editor/display_folded = true
+skippable = false
 
 [node name="Boxes" parent="Textbox/CanvasLayer" index="0"]
 margin_top = -300.0
@@ -106,7 +106,7 @@ text = ""
 wait_time = 0.1
 
 [node name="NextTimer" parent="Textbox" index="3"]
-wait_time = 0.7
+wait_time = 1.5
 
 [node name="IntroTimer" type="Timer" parent="."]
 wait_time = 1.5

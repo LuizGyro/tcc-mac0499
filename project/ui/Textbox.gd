@@ -9,13 +9,14 @@ const sample_text_multiple = ["Oi, meu nome é Haxixe. Você quer ser meu amigui
 
 var player_action = false
 var waiting_next = false
-var skippable = true
+export var skippable = true
 
 func _input(event):
 	if (event.is_action("touch")):
 		player_action = true
 		if (waiting_next):
-			$NextTimer.start()
+			if ($NextTimer.is_stopped()):
+				$NextTimer.start()
 			
 
 func reset():

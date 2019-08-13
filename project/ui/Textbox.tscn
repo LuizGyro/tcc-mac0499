@@ -84,7 +84,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=6]
 resource_name = "pop_in"
 length = 0.1
 tracks/0/type = "value"
@@ -100,7 +100,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=7]
 resource_name = "pop_out"
 length = 0.1
 tracks/0/type = "value"
@@ -235,8 +235,8 @@ anims/Blink = SubResource( 3 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Boxes"]
 anims/fade_in = SubResource( 4 )
 anims/fade_out = SubResource( 5 )
-anims/pop_in = SubResource( 10 )
-anims/pop_out = SubResource( 11 )
+anims/pop_in = SubResource( 6 )
+anims/pop_out = SubResource( 7 )
 anims/slide_in = SubResource( 8 )
 anims/slide_out = SubResource( 9 )
 
