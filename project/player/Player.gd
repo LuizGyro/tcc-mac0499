@@ -3,6 +3,8 @@ extends KinematicBody2D
 const MAX_SPEED = 200
 const ACCEL = 1.05
 
+export var controllable = true
+
 var moving = false
 var speed = Vector2(100, 100)
 
@@ -40,6 +42,9 @@ func _physics_process(delta):
 ##############################################################################################
 
 func _input(event):
+	
+	if !controllable:
+		return
 
 	if event.is_action_pressed("touch"):
 		# May cause problems if collision layers/masks are set incorrectly, or multiple objects are here

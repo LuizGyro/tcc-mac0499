@@ -17,9 +17,11 @@ tile_data = PoolIntArray( 0, 18, 3, 1, 18, 131075, 2, 18, 131075, 3, 18, 131075,
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 701.533, 378.039 )
+controllable = false
 
 [node name="Sprite" parent="Player" index="0"]
 animation = "sleep"
+frame = 1
 
 [node name="CustomCamera" parent="Player" index="3"]
 zoom = Vector2( 0.5, 0.5 )
