@@ -21,7 +21,7 @@ z_index = -1
 position = Vector2( 320, 220 )
 
 [node name="Sprite" parent="Player" index="0"]
-frame = 1
+frame = 2
 
 [node name="CustomCamera" parent="Player" index="3"]
 limit_left = -300
