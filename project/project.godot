@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="TCC-MAC0499"
-run/main_scene="res://maps/TestMap2.tscn"
+run/main_scene="res://maps/Forest/ForestWake.tscn"
 config/icon="res://assets/characters/player/idle1.png"
 
 [autoload]

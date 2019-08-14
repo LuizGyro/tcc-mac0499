@@ -1,15 +1,17 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://player/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/characters/player/idle1.png" type="Texture" id=2]
 [ext_resource path="res://assets/characters/player/idle2.png" type="Texture" id=3]
 [ext_resource path="res://assets/characters/player/idle3.png" type="Texture" id=4]
 [ext_resource path="res://assets/characters/player/idle4.png" type="Texture" id=5]
-[ext_resource path="res://assets/characters/player/walk1.png" type="Texture" id=6]
-[ext_resource path="res://assets/characters/player/walk2.png" type="Texture" id=7]
-[ext_resource path="res://assets/characters/player/walk3.png" type="Texture" id=8]
-[ext_resource path="res://assets/characters/player/walk4.png" type="Texture" id=9]
-[ext_resource path="res://hud/CustomCamera.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/characters/player/sleep1.png" type="Texture" id=6]
+[ext_resource path="res://assets/characters/player/sleep2.png" type="Texture" id=7]
+[ext_resource path="res://assets/characters/player/walk1.png" type="Texture" id=8]
+[ext_resource path="res://assets/characters/player/walk2.png" type="Texture" id=9]
+[ext_resource path="res://assets/characters/player/walk3.png" type="Texture" id=10]
+[ext_resource path="res://assets/characters/player/walk4.png" type="Texture" id=11]
+[ext_resource path="res://hud/CustomCamera.tscn" type="PackedScene" id=12]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -18,7 +20,12 @@ animations = [ {
 "name": "idle",
 "speed": 7.0
 }, {
-"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"frames": [ ExtResource( 6 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "sleep",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ) ],
 "loop": true,
 "name": "walk",
 "speed": 15.0
@@ -38,7 +45,6 @@ script = ExtResource( 1 )
 scale = Vector2( 2.2, 2.2 )
 frames = SubResource( 1 )
 animation = "idle"
-frame = 2
 playing = true
 
 [node name="CollisionBox" type="CollisionShape2D" parent="."]
@@ -55,5 +61,5 @@ collision_mask = 2
 position = Vector2( 0, 30 )
 shape = SubResource( 3 )
 
-[node name="CustomCamera" parent="." instance=ExtResource( 10 )]
+[node name="CustomCamera" parent="." instance=ExtResource( 12 )]
 
