@@ -10,6 +10,8 @@ const sample_text_multiple = ["Oi, meu nome é Haxixe. Você quer ser meu amigui
 var player_action = false
 var waiting_next = false
 export var skippable = true
+# Automatically takes care of VirtualGamepad enabling and disabling 
+export var auto_vg = true
 
 func _input(event):
 	if (event.is_action("touch")):
@@ -28,7 +30,8 @@ func reset():
 # O que vai precisar provavelmente: se tem animação de entrada/saida da caixa,
 # o portrait, o nome do personagem, o texto, se a cena sera invertida (horizontal)
 func prepare_and_emit_text(char_name, text, in_animation="slide_in", out_animation="slide_out"):
-	VirtualGamepad.disable()
+	if (auto_vg):
+		VirtualGamepad.disable()
 	set_process_input(true)
 	reset()
 	
@@ -48,7 +51,7 @@ func prepare_and_emit_text(char_name, text, in_animation="slide_in", out_animati
 	yield($CanvasLayer/Boxes/AnimationPlayer, "animation_finished")
 	
 	emit_signal("textbox_done")
-	if (Global.control_mode == Global.ControlModes.virtual_gamepad):
+	if (Global.control_mode == Global.ControlModes.virtual_gamepad and auto_vg):
 		VirtualGamepad.enable()
 	
 # Show text on screen. Recieves single string.

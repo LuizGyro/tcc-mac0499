@@ -121,8 +121,8 @@ func clicked_on(object):
 	var max_x = posx + (sizex/2)
 	var max_y = posy + (sizey/2)
 	
-#	print(mouse_pos)
-#	print(str("min_x: ", min_x, " min_y: ", min_y, " max_x: ", max_x, " max_y: ", max_y))
+	print(mouse_pos)
+	print(str("min_x: ", min_x, " min_y: ", min_y, " max_x: ", max_x, " max_y: ", max_y))
 
 	if (mouse_pos.x > min_x and mouse_pos.y > min_y and mouse_pos.x < max_x and mouse_pos.y < max_y):
 		return true
