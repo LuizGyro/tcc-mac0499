@@ -23,6 +23,7 @@ config/icon="res://assets/characters/player/idle1.png"
 
 Global="*res://autoloads/global.gd"
 VirtualGamepad="*res://hud/VirtualGamepad.tscn"
+flags="*res://autoloads/flags.gd"
 
 [display]
 

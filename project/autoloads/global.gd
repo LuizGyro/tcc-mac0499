@@ -1,7 +1,7 @@
 extends Node
 
 enum ControlModes {direct, virtual_gamepad}
-var control_mode = ControlModes.direct
+var control_mode = ControlModes.virtual_gamepad
 
 var overworld_scene = "dummy"
 var puzzle_scene
@@ -10,6 +10,7 @@ var correct_answer = false
 # the player submits a wrong answer. This is to discourage guessing, and
 # reward player thought.
 var pxp = 0
+var player_name = "Shell"
 
 
 # This function is used to transition into a puzzle scene,

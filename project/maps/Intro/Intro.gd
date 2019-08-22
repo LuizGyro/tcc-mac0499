@@ -7,6 +7,8 @@ const intro_text = ["Você se lembra?",
 					"Você se lembra quem você era?"]
 
 func _ready():
+	VirtualGamepad.disable()
+	
 	$IntroTimer.start()
 	yield($IntroTimer, "timeout")
 	$BlackFade/AnimationPlayer.play_backwards("fade_out")
