@@ -20,3 +20,11 @@ func _ready():
 			child.hide()
 	yield($Textbox, "textbox_done")
 	$WhiteFade/AnimationPlayer.play("fade_out")
+	yield($WhiteFade/AnimationPlayer, "animation_finished")
+	
+	var next_scene_path = "res://maps/Forest/ForestWake.tscn"
+	var n_scene = load(next_scene_path)
+	var n_instance = n_scene.instance()
+	get_tree().get_root().add_child(n_instance)
+	
+	get_tree().get_root().remove_child(self)
