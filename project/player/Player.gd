@@ -89,7 +89,9 @@ func set_sprite_and_interaction_direction(direction):
 				$InteractionBox.rotation_degrees = 0
 
 	else:
-		$Sprite.set_scale(Vector2(-abs(scale.x), scale.y))
+		# We do this check as a quick fix to VirtualGamepad behaviour
+		if (direction.x != 0):
+			$Sprite.set_scale(Vector2(-abs(scale.x), scale.y))
 		if (direction.y < 0):
 			if (abs(direction.x) > abs(direction.y)):
 				$InteractionBox.rotation_degrees = 90
