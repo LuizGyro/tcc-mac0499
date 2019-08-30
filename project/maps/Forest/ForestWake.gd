@@ -2,6 +2,9 @@ extends Node2D
 
 var first_cutscene_dialog = ["...", "...Aonde eu estou?"]
 
+# This is the map the player is coming from
+var source_name = "none"
+
 func _ready():
 	if (!flags.fw_first_cutscene):
 		VirtualGamepad.disable()
@@ -23,6 +26,15 @@ func _ready():
 		$Player/Sprite._set_playing(true)
 		$BGM.play()
 		restore_control()
+		flags.fw_first_cutscene = true
+	elif (source_name == "ForestMain"):
+		$Player.position = $Spawns/ForestMain.position
+		# Easy way to turn around
+		$Player.move_to_absolute(Vector2(-1, 0))
+		GlobalFade.fade_in()
+		yield(GlobalFade.tween, "tween_completed")
+		$Player.enable_movement()
+		
 
 func restore_control():
 	if Global.control_mode == Global.ControlModes.virtual_gamepad:

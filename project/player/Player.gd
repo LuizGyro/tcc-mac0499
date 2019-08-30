@@ -151,3 +151,17 @@ func determine_and_trigger_interaction():
 		var element = $InteractionBox.get_overlapping_areas()[0].get_parent()
 		element.interact(self)
 		yield(element, "interaction_finished")
+		
+##############################################################################################
+###################################### Control Functions######################################
+##############################################################################################
+
+func disable_movement():
+	self.set_physics_process(false)
+	if Global.control_mode == Global.ControlModes.virtual_gamepad:
+		VirtualGamepad.disable()
+
+func enable_movement():
+	self.set_physics_process(true)
+	if Global.control_mode == Global.ControlModes.virtual_gamepad:
+		VirtualGamepad.enable()

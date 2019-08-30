@@ -1,9 +1,12 @@
+# This scene needs to be a direct child of the map root
+
 extends Area2D
 
 export (Vector2) var portal_direction = Vector2(0, 0)
-export (PackedScene) var destination
+export (String) var destination
 
 var player
+onready var source = get_parent()
 
 func _ready():
 	set_process(false)
@@ -22,16 +25,10 @@ func _on_MapPortal_body_entered(body):
 		player.get_node("Sprite").set_animation("walk")
 		
 		set_process(true)
-		$Timer.start()
-		yield($Timer, "timeout")
-		# Make scene transition here
+#		$Timer.start()
+#		yield($Timer, "timeout")
 		
-		# This may not be necessary once the scene transition happens
-		set_process(false)
-		restore_control()
-
-func restore_control():
-	if Global.control_mode == Global.ControlModes.virtual_gamepad:
-		VirtualGamepad.enable()
-	else:
-		player.controllable = true
+		GlobalFade.fade_out()
+		yield(GlobalFade.tween, "tween_completed")
+		
+		Global.call_deferred("transition_to_scene", source, destination)

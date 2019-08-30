@@ -1,3 +1,3 @@
 extends Node
 
-var fw_first_cutscene = false
+var fw_first_cutscene = true

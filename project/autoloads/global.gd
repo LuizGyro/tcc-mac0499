@@ -32,4 +32,13 @@ func transition_to_puzzle(o_scene, puzzle_name):
 func transition_to_overworld():
 	get_tree().get_root().remove_child(puzzle_scene)
 	if (typeof(overworld_scene) == TYPE_OBJECT):
-		get_tree().get_root().add_child(overworld_scene) 
+		get_tree().get_root().add_child(overworld_scene)
+		# Maybe clear overworld_scene here to not keep it loaded at all times
+
+func transition_to_scene(from, to_path):
+	var s_n = from.get_name()
+	from.queue_free()
+	var to_scene = load(to_path)
+	var to_instance = to_scene.instance()
+	to_instance.source_name = s_n
+	get_tree().get_root().add_child(to_instance)
