@@ -7,7 +7,7 @@ var source_name = "none"
 
 func _ready():
 	if (!flags.fw_first_cutscene):
-		VirtualGamepad.disable()
+		$Player.disable_movement()
 		
 		$Cutscene/AnimationPlayer.play("fade_in")
 		yield($Cutscene/AnimationPlayer, "animation_finished")
@@ -25,7 +25,7 @@ func _ready():
 		yield($Cutscene/Timer, "timeout")
 		$Player/Sprite._set_playing(true)
 		$BGM.play()
-		restore_control()
+		$Player.enable_movement()
 		flags.fw_first_cutscene = true
 	elif (source_name == "ForestMain"):
 		$Player.position = $Spawns/ForestMain.position
@@ -34,10 +34,3 @@ func _ready():
 		GlobalFade.fade_in()
 		yield(GlobalFade.tween, "tween_completed")
 		$Player.enable_movement()
-		
-
-func restore_control():
-	if Global.control_mode == Global.ControlModes.virtual_gamepad:
-		VirtualGamepad.enable()
-	else:
-		$Player.controllable = true
