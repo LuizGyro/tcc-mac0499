@@ -14,3 +14,8 @@ func _ready():
 		GlobalFade.fade_in()
 		yield(GlobalFade.tween, "tween_completed")
 		$Player.enable_movement()
+
+
+func _on_1_body_entered(body):
+	if !flags.fm_first_cutscene:
+		pass
