@@ -124,7 +124,7 @@ script = ExtResource( 1 )
 scale = Vector2( 2.2, 2.2 )
 frames = SubResource( 1 )
 animation = "swim"
-frame = 3
+frame = 2
 playing = true
 
 [node name="BodyCollision" type="CollisionShape2D" parent="."]
@@ -150,3 +150,5 @@ anims/swim = SubResource( 5 )
 [node name="AnimatedLabel" parent="." instance=ExtResource( 18 )]
 position = Vector2( -20, -40 )
 
+
+[editable path="AnimatedLabel"]
