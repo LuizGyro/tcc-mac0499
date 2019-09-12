@@ -19,7 +19,7 @@ func _on_MapPortal_body_entered(body):
 	if (body.get_name().to_lower() == "player"):
 		player = body
 		
-		player.controllable = false
+		player.disable_movement()
 		player.moving = false
 		VirtualGamepad.disable()
 		player.get_node("Sprite").set_animation("walk")

@@ -28,7 +28,9 @@ func _ready():
 		$Player.enable_movement()
 		flags.fw_first_cutscene = true
 	elif (source_name == "ForestMain"):
+		$Player.disable_movement()
 		$Player.position = $Spawns/ForestMain.position
+		$Player/Sprite.set_animation("idle")
 		# Easy way to turn around
 		$Player.move_to_absolute(Vector2(-1, 0))
 		GlobalFade.fade_in()

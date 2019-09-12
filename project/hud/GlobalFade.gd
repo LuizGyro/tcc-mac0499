@@ -12,5 +12,5 @@ func fade_out():
 	tween.start()
 	
 func fade_in():
-	tween.interpolate_property($CanvasLayer/Fade, "color:a", 1, 0, duration * 1.5, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
+	tween.interpolate_property($CanvasLayer/Fade, "color:a", 1, 0, duration * 0.3, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
 	tween.start()
