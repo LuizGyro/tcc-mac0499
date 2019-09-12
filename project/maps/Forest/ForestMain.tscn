@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://maps/Forest/ForestMain.gd" type="Script" id=1]
 [ext_resource path="res://maps/Forest/ForestTileMap.tscn" type="PackedScene" id=2]
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://maps/General/MapPortal.tscn" type="PackedScene" id=4]
 [ext_resource path="res://elements/characters/duco/Duco.tscn" type="PackedScene" id=5]
+[ext_resource path="res://ui/Textbox.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10, 123.346 )
@@ -31,7 +32,7 @@ editor/display_folded = true
 position = Vector2( -432, 160 )
 
 [node name="Sprite" parent="Player" index="0"]
-frame = 1
+frame = 0
 
 [node name="CustomCamera" parent="Player" index="3"]
 zoom = Vector2( 0.65, 0.65 )
@@ -56,14 +57,24 @@ position = Vector2( 847.773, 1283.22 )
 
 [node name="Triggers" type="Node2D" parent="."]
 
-[node name="1" type="Area2D" parent="Triggers"]
-editor/display_folded = true
+[node name="T1" type="Area2D" parent="Triggers"]
 position = Vector2( 520.772, 1331.98 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/T1"]
 position = Vector2( -32.649, -6.80188 )
 shape = SubResource( 1 )
 
-[connection signal="body_entered" from="Triggers/1" to="." method="_on_1_body_entered"]
+[node name="Timer" type="Timer" parent="Triggers/T1"]
+wait_time = 1.2
+one_shot = true
+
+[node name="ThoughtBox" parent="Triggers/T1" instance=ExtResource( 6 )]
+
+[node name="Text" parent="Triggers/T1/ThoughtBox/CanvasLayer/Boxes" index="5"]
+custom_colors/font_color = Color( 0.14902, 0.933333, 0.282353, 1 )
+
+[connection signal="body_entered" from="Triggers/T1" to="." method="_on_T1_body_entered"]
 
 [editable path="Player"]
+
+[editable path="Triggers/T1/ThoughtBox"]

@@ -2,6 +2,10 @@ extends Node2D
 
 # This is the map the player is coming from
 var source_name = "none"
+var T1_cutscene_dialog = ["...Aquilo é um pato com um capacete? Eu estou sonhando?",
+						"Acho que eu vou tentar falar com ele...", 
+						"Eu... lati? E o pato só me ignorou...",
+						"Que sonho estranho... eu vou voltar para onde eu acordei, e voltar a dormir."]
 
 var explore_counter = 0
 
@@ -16,6 +20,13 @@ func _ready():
 		$Player.enable_movement()
 
 
-func _on_1_body_entered(body):
+func _on_T1_body_entered(body):
 	if !flags.fm_first_cutscene:
-		pass
+		if (body.get_name().to_lower() == "player"):
+			body.disable_movement()
+			body.get_node("Sprite").set_animation("idle")
+			$Triggers/T1/Timer.start()
+			yield($Triggers/T1/Timer, "timeout")
+			$Triggers/T1/ThoughtBox.prepare_and_emit_text(Global.player_name, T1_cutscene_dialog)
+		
+		

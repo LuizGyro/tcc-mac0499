@@ -222,7 +222,6 @@ limit_right = 1440
 limit_bottom = 1100
 
 [node name="Cutscene" type="Node2D" parent="."]
-editor/display_folded = true
 z_index = 4
 __meta__ = {
 "_edit_lock_": true
@@ -242,7 +241,6 @@ wait_time = 0.8
 one_shot = true
 
 [node name="Thoughtbox" parent="Cutscene" instance=ExtResource( 4 )]
-editor/display_folded = true
 auto_vg = false
 
 [node name="NameBoxOut" parent="Cutscene/Thoughtbox/CanvasLayer/Boxes" index="0"]
@@ -272,6 +270,7 @@ anims/slide_out = SubResource( 9 )
 stream = ExtResource( 5 )
 
 [node name="Elements" type="Node2D" parent="."]
+editor/display_folded = true
 __meta__ = {
 "_edit_lock_": true
 }
