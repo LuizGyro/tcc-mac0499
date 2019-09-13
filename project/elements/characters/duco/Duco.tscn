@@ -124,7 +124,7 @@ script = ExtResource( 1 )
 scale = Vector2( 2.2, 2.2 )
 frames = SubResource( 1 )
 animation = "swim"
-frame = 2
+frame = 1
 playing = true
 
 [node name="BodyCollision" type="CollisionShape2D" parent="."]

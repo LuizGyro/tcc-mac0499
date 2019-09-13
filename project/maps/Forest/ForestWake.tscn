@@ -1,12 +1,11 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://maps/Forest/ForestWake.gd" type="Script" id=1]
 [ext_resource path="res://maps/Forest/ForestTileMap.tscn" type="PackedScene" id=2]
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://ui/Textbox.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/placeholder/Final Fantasy VI_ Awakening Extended.ogg" type="AudioStream" id=5]
-[ext_resource path="res://elements/Objects/SimpleObject.gd" type="Script" id=6]
-[ext_resource path="res://maps/General/MapPortal.tscn" type="PackedScene" id=7]
+[ext_resource path="res://elements/Objects/SimpleObject.gd" type="Script" id=5]
+[ext_resource path="res://maps/General/MapPortal.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Animation" id=1]
 resource_name = "fade_in"
@@ -222,6 +221,7 @@ limit_right = 1440
 limit_bottom = 1100
 
 [node name="Cutscene" type="Node2D" parent="."]
+editor/display_folded = true
 z_index = 4
 __meta__ = {
 "_edit_lock_": true
@@ -266,9 +266,6 @@ anims/pop_out = SubResource( 7 )
 anims/slide_in = SubResource( 8 )
 anims/slide_out = SubResource( 9 )
 
-[node name="BGM" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 5 )
-
 [node name="Elements" type="Node2D" parent="."]
 editor/display_folded = true
 __meta__ = {
@@ -277,7 +274,7 @@ __meta__ = {
 
 [node name="FirstTrunk" type="Node2D" parent="Elements"]
 position = Vector2( 720, 350 )
-script = ExtResource( 6 )
+script = ExtResource( 5 )
 
 [node name="InteractionBox" type="Area2D" parent="Elements/FirstTrunk"]
 collision_layer = 2
@@ -311,7 +308,7 @@ visible = false
 [node name="Text" parent="Elements/FirstTrunk/Textbox/CanvasLayer/Boxes" index="5"]
 custom_colors/font_color = Color( 0.14902, 0.933333, 0.282353, 1 )
 
-[node name="MapPortal" parent="." instance=ExtResource( 7 )]
+[node name="MapPortal" parent="." instance=ExtResource( 6 )]
 editor/display_folded = true
 position = Vector2( 1300, 580 )
 portal_direction = Vector2( 1, 0 )

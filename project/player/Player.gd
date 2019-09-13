@@ -153,6 +153,7 @@ func determine_and_trigger_interaction():
 
 func disable_movement():
 	self.set_physics_process(false)
+	self.moving = false
 	
 	if (Global.control_mode == Global.ControlModes.direct):
 		set_process_input(false)
