@@ -124,7 +124,7 @@ script = ExtResource( 1 )
 scale = Vector2( 2.2, 2.2 )
 frames = SubResource( 1 )
 animation = "swim"
-frame = 1
+frame = 2
 playing = true
 
 [node name="BodyCollision" type="CollisionShape2D" parent="."]
@@ -148,6 +148,7 @@ autoplay = "swim"
 anims/swim = SubResource( 5 )
 
 [node name="AnimatedLabel" parent="." instance=ExtResource( 18 )]
+editor/display_folded = true
 position = Vector2( -20, -40 )
 
 
