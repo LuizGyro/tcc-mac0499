@@ -66,6 +66,7 @@ wait_time = 1.2
 one_shot = true
 
 [node name="ThoughtBox" parent="Triggers/T1" instance=ExtResource( 6 )]
+editor/display_folded = true
 
 [node name="Text" parent="Triggers/T1/ThoughtBox/CanvasLayer/Boxes" index="5"]
 custom_colors/font_color = Color( 0.14902, 0.933333, 0.282353, 1 )

@@ -3,6 +3,9 @@ extends Node2D
 var first_cutscene_dialog_1 = ["...", "...Aonde eu estou?"]
 var first_cutscene_dialog_2 = ["Eu estou em uma floresta? Até aonde eu me lembro, eu estava no meu quarto.",
 								"...", "Vou dar uma olhada em volta, talvez eu me lembre de algo."]
+var second_cutscene_dialog_1 = ["Voltar para a cama e dormir não vai resolver nada. Você sabe disso, não?"]
+var second_cutscene_dialog_2 = ["Quem disse isso?"]
+var second_cutscene_dialog_3 = ["Você deve ser novo por aqui, certo? Eu vi você tentando falar com o Duco...", "Meu nome é Gasa. Percebo que você tem dificuldade em se comunicar, ainda.", "Me permita te acompanhar. Eu posso te ajudar, se você quiser."]
 
 # This is the map the player is coming from
 var source_name = "none"
@@ -48,3 +51,12 @@ func _ready():
 		GlobalFade.fade_in()
 		yield(GlobalFade.tween, "tween_completed")
 		$Player.enable_movement()
+
+
+func _on_T1_body_entered(body):
+	if flags.fw_first_cutscene and flags.fm_first_cutscene:
+		if (body.get_name().to_lower() == "player"):
+			body.disable_movement()
+			body.get_node("Sprite").set_animation("idle")
+			$Cutscene/Textbox.prepare_and_emit_text("???", second_cutscene_dialog_1)
+			

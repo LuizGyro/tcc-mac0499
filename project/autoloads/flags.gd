@@ -1,5 +1,7 @@
 extends Node
 
-var fw_first_cutscene = false
+# ForestWake
+var fw_first_cutscene = true
 
-var fm_first_cutscene = false
+# ForestMain
+var fm_first_cutscene = true
