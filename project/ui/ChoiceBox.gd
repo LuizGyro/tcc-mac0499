@@ -29,9 +29,9 @@ func prepare_and_emit_options(option1="Sim", option2="Não", in_animation="slide
 	$CanvasLayer/Boxes/AnimationPlayer.play(out_animation)
 	yield($CanvasLayer/Boxes/AnimationPlayer, "animation_finished")
 	
-	emit_signal("choicebox_done", choice)
 	if (Global.control_mode == Global.ControlModes.virtual_gamepad):
 		VirtualGamepad.enable()
+	emit_signal("choicebox_done", choice)
 
 func _on_Option1_pressed():
 	choice = 1
