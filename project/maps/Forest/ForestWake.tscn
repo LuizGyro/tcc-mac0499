@@ -7,11 +7,10 @@
 [ext_resource path="res://elements/Objects/SimpleObject.gd" type="Script" id=5]
 [ext_resource path="res://maps/General/MapPortal.tscn" type="PackedScene" id=6]
 
-[sub_resource type="RectangleShape2D" id=11]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 70, 40 )
 
-[sub_resource type="Animation" id=1]
-resource_name = "fade_in"
+[sub_resource type="Animation" id=2]
 length = 3.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("WhiteFade:color")
@@ -26,8 +25,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "zoom_in"
+[sub_resource type="Animation" id=3]
 length = 5.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("../Player/CustomCamera:zoom")
@@ -42,8 +40,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0.65, 0.65 ), Vector2( 0.5, 0.5 ) ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "Blink"
+[sub_resource type="Animation" id=4]
 length = 0.6
 loop = true
 tracks/0/type = "value"
@@ -59,8 +56,7 @@ tracks/0/keys = {
 "values": [ true, false, true ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "fade_in"
+[sub_resource type="Animation" id=5]
 length = 0.7
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -87,8 +83,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "fade_out"
+[sub_resource type="Animation" id=6]
 length = 0.7
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -115,8 +110,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "pop_in"
+[sub_resource type="Animation" id=7]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -131,8 +125,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=7]
-resource_name = "pop_out"
+[sub_resource type="Animation" id=8]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -147,7 +140,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=9]
 length = 0.7
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:rect_position")
@@ -174,7 +167,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=10]
 length = 0.7
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:rect_position")
@@ -189,7 +182,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 600 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=10]
+[sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 40, 30 )
 
 [node name="ForestWake" type="Node2D"]
@@ -238,11 +231,11 @@ editor/display_folded = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cutscene/Triggers/T1"]
 position = Vector2( 740, 402 )
-shape = SubResource( 11 )
+shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Cutscene"]
-anims/fade_in = SubResource( 1 )
-anims/zoom_in = SubResource( 2 )
+anims/fade_in = SubResource( 2 )
+anims/zoom_in = SubResource( 3 )
 
 [node name="WhiteFade" type="ColorRect" parent="Cutscene"]
 margin_right = 1920.0
@@ -270,15 +263,15 @@ visible = false
 custom_colors/font_color = Color( 0.14902, 0.933333, 0.282353, 1 )
 
 [node name="AnimationPlayer" parent="Cutscene/Thoughtbox/CanvasLayer/Boxes/Arrow" index="0"]
-anims/Blink = SubResource( 3 )
+anims/Blink = SubResource( 4 )
 
 [node name="AnimationPlayer" parent="Cutscene/Thoughtbox/CanvasLayer/Boxes" index="7"]
-anims/fade_in = SubResource( 4 )
-anims/fade_out = SubResource( 5 )
-anims/pop_in = SubResource( 6 )
-anims/pop_out = SubResource( 7 )
-anims/slide_in = SubResource( 8 )
-anims/slide_out = SubResource( 9 )
+anims/fade_in = SubResource( 5 )
+anims/fade_out = SubResource( 6 )
+anims/pop_in = SubResource( 7 )
+anims/pop_out = SubResource( 8 )
+anims/slide_in = SubResource( 9 )
+anims/slide_out = SubResource( 10 )
 
 [node name="Textbox" parent="Cutscene" instance=ExtResource( 4 )]
 
@@ -298,7 +291,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Elements/FirstTrunk/InteractionBox"]
-shape = SubResource( 10 )
+shape = SubResource( 11 )
 
 [node name="Textbox" parent="Elements/FirstTrunk" instance=ExtResource( 4 )]
 editor/display_folded = true

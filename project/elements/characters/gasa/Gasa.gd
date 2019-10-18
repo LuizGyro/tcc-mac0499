@@ -30,6 +30,10 @@ func _process(delta):
 		speed = Vector2(150, 150)
 	elif (following):
 		direction = (player.position - self.position).normalized()
+		if (direction.x > 0):
+			$Sprite.set_scale(Vector2(abs(scale.x), scale.y))
+		else:
+			$Sprite.set_scale(Vector2(-abs(scale.x), scale.y))
 		speed = (speed * ACCEL).clamped(MAX_SPEED)
 		move_and_slide(direction * speed)
 		
