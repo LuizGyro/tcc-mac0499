@@ -6,6 +6,8 @@ var first_cutscene_dialog_2 = ["Eu estou em uma floresta? Até aonde eu me lembr
 var second_cutscene_dialog_1 = ["Voltar para a cama e dormir não vai resolver nada. Você sabe disso, não?"]
 var second_cutscene_dialog_2 = ["Quem disse isso?"]
 var second_cutscene_dialog_3 = ["Você deve ser novo por aqui, certo? Eu vi você tentando falar com o Duco...", "Meu nome é Gasa. Percebo que você tem dificuldade em se comunicar, ainda.", "Me permita te acompanhar. Eu posso te ajudar, se você quiser."]
+var second_cutscene_option_1 = ["Sábia escolha. Por ora, então, vou te acompanhar!"]
+var second_cutscene_option_2 = ["Pense bem. Sem mim, você terá muita dificuldade em sair daqui."]
 
 # This is the map the player is coming from
 var source_name = "none"
@@ -51,12 +53,37 @@ func _ready():
 		GlobalFade.fade_in()
 		yield(GlobalFade.tween, "tween_completed")
 		$Player.enable_movement()
+	if (flags.fw_second_cutscene):
+		$Gasa.active = true
 
 
 func _on_T1_body_entered(body):
-	if flags.fw_first_cutscene and flags.fm_first_cutscene:
+	if flags.fw_first_cutscene and flags.fm_first_cutscene and !flags.fw_second_cutscene:
 		if (body.get_name().to_lower() == "player"):
 			body.disable_movement()
 			body.get_node("Sprite").set_animation("idle")
 			$Cutscene/Textbox.prepare_and_emit_text("???", second_cutscene_dialog_1)
-			
+			yield($Cutscene/Textbox, "textbox_done")
+			$Player/AnimatedLabel/AnimationPlayer.play("?")
+			$Cutscene/Thoughtbox.prepare_and_emit_text(Global.player_name, second_cutscene_dialog_2)
+			yield($Cutscene/Thoughtbox, "textbox_done")
+			$Gasa.position.y = $Player.position.y
+			$Cutscene/Tween.interpolate_property($Gasa, "position", $Gasa.position, $Player.position - Vector2(50, 0), 1, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
+			$Cutscene/Tween.start()
+			$Player/AnimatedLabel/AnimationPlayer.play("!")
+			$Player.move_to_absolute(Vector2(-1, 0))
+			yield($Cutscene/Tween, "tween_completed")
+			$Cutscene/Textbox.prepare_and_emit_text("Gasa", second_cutscene_dialog_3)
+			yield($Cutscene/Textbox, "textbox_done")
+			$Cutscene/ChoiceBox.prepare_and_emit_options("Yeah", "Nah")
+			var choice = yield($Cutscene/ChoiceBox, "choicebox_done")
+			while (choice != 1):
+				$Cutscene/Textbox.prepare_and_emit_text("Gasa", second_cutscene_option_2)
+				yield($Cutscene/Textbox, "textbox_done")
+				$Cutscene/ChoiceBox.prepare_and_emit_options("Aceitar", "Recusar")
+				choice = yield($Cutscene/ChoiceBox, "choicebox_done")
+			$Cutscene/Textbox.prepare_and_emit_text("Gasa", second_cutscene_option_1)
+			yield($Cutscene/Textbox, "textbox_done")
+			$Player.enable_movement()
+			$Gasa.active = true
+			flags.fw_second_cutscene = true

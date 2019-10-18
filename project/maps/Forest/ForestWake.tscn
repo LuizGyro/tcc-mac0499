@@ -1,11 +1,13 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://maps/Forest/ForestWake.gd" type="Script" id=1]
 [ext_resource path="res://maps/Forest/ForestTileMap.tscn" type="PackedScene" id=2]
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://ui/Textbox.tscn" type="PackedScene" id=4]
-[ext_resource path="res://elements/Objects/SimpleObject.gd" type="Script" id=5]
-[ext_resource path="res://maps/General/MapPortal.tscn" type="PackedScene" id=6]
+[ext_resource path="res://elements/characters/gasa/Gasa.tscn" type="PackedScene" id=4]
+[ext_resource path="res://ui/Textbox.tscn" type="PackedScene" id=5]
+[ext_resource path="res://ui/ChoiceBox.tscn" type="PackedScene" id=6]
+[ext_resource path="res://elements/Objects/SimpleObject.gd" type="Script" id=7]
+[ext_resource path="res://maps/General/MapPortal.tscn" type="PackedScene" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 70, 40 )
@@ -217,15 +219,16 @@ limit_top = 0
 limit_right = 1440
 limit_bottom = 1100
 
+[node name="Gasa" parent="." instance=ExtResource( 4 )]
+active = false
+
 [node name="Cutscene" type="Node2D" parent="."]
-editor/display_folded = true
 z_index = 4
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="Triggers" type="Node2D" parent="Cutscene"]
-editor/display_folded = true
 
 [node name="T1" type="Area2D" parent="Cutscene/Triggers"]
 
@@ -246,7 +249,7 @@ color = Color( 1, 1, 1, 0 )
 wait_time = 0.8
 one_shot = true
 
-[node name="Thoughtbox" parent="Cutscene" instance=ExtResource( 4 )]
+[node name="Thoughtbox" parent="Cutscene" instance=ExtResource( 5 )]
 editor/display_folded = true
 auto_vg = false
 
@@ -273,7 +276,11 @@ anims/pop_out = SubResource( 8 )
 anims/slide_in = SubResource( 9 )
 anims/slide_out = SubResource( 10 )
 
-[node name="Textbox" parent="Cutscene" instance=ExtResource( 4 )]
+[node name="Textbox" parent="Cutscene" instance=ExtResource( 5 )]
+
+[node name="Tween" type="Tween" parent="Cutscene"]
+
+[node name="ChoiceBox" parent="Cutscene" instance=ExtResource( 6 )]
 
 [node name="Elements" type="Node2D" parent="."]
 editor/display_folded = true
@@ -284,7 +291,7 @@ __meta__ = {
 [node name="FirstTrunk" type="Node2D" parent="Elements"]
 editor/display_folded = true
 position = Vector2( 720, 350 )
-script = ExtResource( 5 )
+script = ExtResource( 7 )
 
 [node name="InteractionBox" type="Area2D" parent="Elements/FirstTrunk"]
 collision_layer = 2
@@ -293,7 +300,7 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Elements/FirstTrunk/InteractionBox"]
 shape = SubResource( 11 )
 
-[node name="Textbox" parent="Elements/FirstTrunk" instance=ExtResource( 4 )]
+[node name="Textbox" parent="Elements/FirstTrunk" instance=ExtResource( 5 )]
 editor/display_folded = true
 margin_left = 720.0
 margin_top = 350.0
@@ -318,7 +325,7 @@ visible = false
 [node name="Text" parent="Elements/FirstTrunk/Textbox/CanvasLayer/Boxes" index="5"]
 custom_colors/font_color = Color( 0.14902, 0.933333, 0.282353, 1 )
 
-[node name="MapPortal" parent="." instance=ExtResource( 6 )]
+[node name="MapPortal" parent="." instance=ExtResource( 8 )]
 editor/display_folded = true
 position = Vector2( 1300, 580 )
 portal_direction = Vector2( 1, 0 )
@@ -335,6 +342,8 @@ position = Vector2( 1220, 640 )
 [editable path="Player"]
 
 [editable path="Cutscene/Thoughtbox"]
+
+[editable path="Cutscene/ChoiceBox"]
 
 [editable path="Elements/FirstTrunk/Textbox"]
 

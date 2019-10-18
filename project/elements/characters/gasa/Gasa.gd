@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 var player = null
 
+export var active = true
 var timing = false
 var following = false
 
@@ -18,6 +19,8 @@ func _ready():
 		set_process(true)
 		
 func _process(delta):
+	if (!active):
+		return
 	if (self.position.distance_to(player.position) > 50 and !following and !timing):
 		$FollowTimer.wait_time = randf() * 1.25
 		$FollowTimer.start()
