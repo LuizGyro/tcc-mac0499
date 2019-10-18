@@ -1,11 +1,12 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://maps/Forest/ForestMain.gd" type="Script" id=1]
 [ext_resource path="res://maps/Forest/ForestTileMap.tscn" type="PackedScene" id=2]
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://maps/General/MapPortal.tscn" type="PackedScene" id=4]
-[ext_resource path="res://elements/characters/duco/Duco.tscn" type="PackedScene" id=5]
-[ext_resource path="res://ui/Textbox.tscn" type="PackedScene" id=6]
+[ext_resource path="res://elements/characters/gasa/Gasa.tscn" type="PackedScene" id=4]
+[ext_resource path="res://maps/General/MapPortal.tscn" type="PackedScene" id=5]
+[ext_resource path="res://elements/characters/duco/Duco.tscn" type="PackedScene" id=6]
+[ext_resource path="res://ui/Textbox.tscn" type="PackedScene" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10, 123.346 )
@@ -38,21 +39,26 @@ limit_top = -150
 limit_right = 2560
 limit_bottom = 1600
 
+[node name="Gasa" parent="." instance=ExtResource( 4 )]
+position = Vector2( -901.934, -325.319 )
+active = false
+
 [node name="Spawns" type="Node2D" parent="."]
 editor/display_folded = true
 
 [node name="ForestWake" type="Position2D" parent="Spawns"]
 position = Vector2( -432, 160 )
 
-[node name="MapPortal" parent="." instance=ExtResource( 4 )]
+[node name="MapPortal" parent="." instance=ExtResource( 5 )]
 position = Vector2( -504.563, 185.641 )
 portal_direction = Vector2( -1, 0 )
 destination = "res://maps/Forest/ForestWake.tscn"
 
-[node name="Duco" parent="." instance=ExtResource( 5 )]
+[node name="Duco" parent="." instance=ExtResource( 6 )]
 position = Vector2( 847.773, 1283.22 )
 
 [node name="Triggers" type="Node2D" parent="."]
+editor/display_folded = true
 
 [node name="T1" type="Area2D" parent="Triggers"]
 position = Vector2( 520.772, 1331.98 )
@@ -65,7 +71,7 @@ shape = SubResource( 1 )
 wait_time = 1.2
 one_shot = true
 
-[node name="ThoughtBox" parent="Triggers/T1" instance=ExtResource( 6 )]
+[node name="ThoughtBox" parent="Triggers/T1" instance=ExtResource( 7 )]
 
 [node name="NameBoxOut" parent="Triggers/T1/ThoughtBox/CanvasLayer/Boxes" index="0"]
 visible = false

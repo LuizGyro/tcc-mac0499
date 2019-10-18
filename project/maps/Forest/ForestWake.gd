@@ -13,6 +13,8 @@ var second_cutscene_option_2 = ["Pense bem. Sem mim, você terá muita dificulda
 var source_name = "none"
 
 func _ready():
+	# To prevent preemptive activation
+	$Cutscene/Triggers/T1/CollisionShape2D.disabled = true
 	if (!flags.fw_first_cutscene):
 		$Player.disable_movement()
 		
@@ -50,11 +52,14 @@ func _ready():
 		$Player/Sprite.set_animation("idle")
 		# Easy way to turn around
 		$Player.move_to_absolute(Vector2(-1, 0))
+		if (flags.fw_second_cutscene):
+			$Gasa.active = true
+			$Gasa.position = $Player.position - Vector2(0, 40)
+			$Gasa/Sprite.scale.x = abs($Gasa/Sprite.scale.x) * sign($Player/Sprite.scale.x)
 		GlobalFade.fade_in()
 		yield(GlobalFade.tween, "tween_completed")
 		$Player.enable_movement()
-	if (flags.fw_second_cutscene):
-		$Gasa.active = true
+	$Cutscene/Triggers/T1/CollisionShape2D.disabled = false
 
 
 func _on_T1_body_entered(body):
@@ -62,6 +67,7 @@ func _on_T1_body_entered(body):
 		if (body.get_name().to_lower() == "player"):
 			body.disable_movement()
 			body.get_node("Sprite").set_animation("idle")
+			SoundPlayers.get_node("BGM").stop()
 			$Cutscene/Textbox.prepare_and_emit_text("???", second_cutscene_dialog_1)
 			yield($Cutscene/Textbox, "textbox_done")
 			$Player/AnimatedLabel/AnimationPlayer.play("?")
@@ -84,6 +90,7 @@ func _on_T1_body_entered(body):
 				choice = yield($Cutscene/ChoiceBox, "choicebox_done")
 			$Cutscene/Textbox.prepare_and_emit_text("Gasa", second_cutscene_option_1)
 			yield($Cutscene/Textbox, "textbox_done")
+			SoundPlayers.get_node("BGM").play()
 			$Player.enable_movement()
 			$Gasa.active = true
 			flags.fw_second_cutscene = true

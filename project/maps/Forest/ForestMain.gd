@@ -15,6 +15,10 @@ func _ready():
 		$Player.position = $Spawns/ForestWake.position
 		# Easy way to turn around
 		$Player.move_to_absolute(Vector2(1, 0))
+		if (flags.fw_second_cutscene):
+			$Gasa.active = true
+			$Gasa.position = $Player.position - Vector2(0, 40)
+			$Gasa/Sprite.scale.x = abs($Gasa/Sprite.scale.x) * sign($Player/Sprite.scale.x)
 		GlobalFade.fade_in()
 		yield(GlobalFade.tween, "tween_completed")
 		$Player.enable_movement()
