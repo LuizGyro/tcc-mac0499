@@ -30,7 +30,7 @@ tile_data = PoolIntArray( -524296, 18, 3, -524295, 18, 131075, -524294, 18, 1310
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 editor/display_folded = true
-position = Vector2( -432, 160 )
+position = Vector2( 380.018, 1209.88 )
 
 [node name="CustomCamera" parent="Player" index="3"]
 zoom = Vector2( 0.65, 0.65 )
@@ -58,7 +58,6 @@ destination = "res://maps/Forest/ForestWake.tscn"
 position = Vector2( 847.773, 1283.22 )
 
 [node name="Triggers" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="T1" type="Area2D" parent="Triggers"]
 position = Vector2( 520.772, 1331.98 )
@@ -72,6 +71,7 @@ wait_time = 1.2
 one_shot = true
 
 [node name="ThoughtBox" parent="Triggers/T1" instance=ExtResource( 7 )]
+editor/display_folded = true
 
 [node name="NameBoxOut" parent="Triggers/T1/ThoughtBox/CanvasLayer/Boxes" index="0"]
 visible = false
@@ -84,6 +84,10 @@ visible = false
 
 [node name="Text" parent="Triggers/T1/ThoughtBox/CanvasLayer/Boxes" index="5"]
 custom_colors/font_color = Color( 0.14902, 0.933333, 0.282353, 1 )
+
+[node name="Textbox" parent="Triggers/T1" instance=ExtResource( 7 )]
+
+[node name="Tween" type="Tween" parent="Triggers/T1"]
 
 [connection signal="body_entered" from="Triggers/T1" to="." method="_on_T1_body_entered"]
 

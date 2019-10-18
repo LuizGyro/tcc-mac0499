@@ -5,18 +5,18 @@
 [ext_resource path="res://assets/characters/duco/idle2.png" type="Texture" id=3]
 [ext_resource path="res://assets/characters/duco/idle3.png" type="Texture" id=4]
 [ext_resource path="res://assets/characters/duco/idle4.png" type="Texture" id=5]
-[ext_resource path="res://assets/characters/duco/walk1.png" type="Texture" id=6]
-[ext_resource path="res://assets/characters/duco/walk2.png" type="Texture" id=7]
-[ext_resource path="res://assets/characters/duco/walk3.png" type="Texture" id=8]
-[ext_resource path="res://assets/characters/duco/walk4.png" type="Texture" id=9]
-[ext_resource path="res://assets/characters/duco/swim1.png" type="Texture" id=10]
-[ext_resource path="res://assets/characters/duco/swim2.png" type="Texture" id=11]
-[ext_resource path="res://assets/characters/duco/swim3.png" type="Texture" id=12]
-[ext_resource path="res://assets/characters/duco/swim4.png" type="Texture" id=13]
-[ext_resource path="res://assets/characters/duco/quack1.png" type="Texture" id=14]
-[ext_resource path="res://assets/characters/duco/quack2.png" type="Texture" id=15]
-[ext_resource path="res://assets/characters/duco/quack3.png" type="Texture" id=16]
-[ext_resource path="res://assets/characters/duco/quack4.png" type="Texture" id=17]
+[ext_resource path="res://assets/characters/duco/quack1.png" type="Texture" id=6]
+[ext_resource path="res://assets/characters/duco/quack2.png" type="Texture" id=7]
+[ext_resource path="res://assets/characters/duco/quack3.png" type="Texture" id=8]
+[ext_resource path="res://assets/characters/duco/quack4.png" type="Texture" id=9]
+[ext_resource path="res://assets/characters/duco/walk1.png" type="Texture" id=10]
+[ext_resource path="res://assets/characters/duco/walk2.png" type="Texture" id=11]
+[ext_resource path="res://assets/characters/duco/walk3.png" type="Texture" id=12]
+[ext_resource path="res://assets/characters/duco/walk4.png" type="Texture" id=13]
+[ext_resource path="res://assets/characters/duco/swim1.png" type="Texture" id=14]
+[ext_resource path="res://assets/characters/duco/swim2.png" type="Texture" id=15]
+[ext_resource path="res://assets/characters/duco/swim3.png" type="Texture" id=16]
+[ext_resource path="res://assets/characters/duco/swim4.png" type="Texture" id=17]
 [ext_resource path="res://elements/extras/AnimatedLabel.tscn" type="PackedScene" id=18]
 
 [sub_resource type="SpriteFrames" id=1]
@@ -28,17 +28,17 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
 "loop": true,
-"name": "walk",
+"name": "talk",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ],
 "loop": true,
-"name": "swim",
+"name": "walk",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ) ],
 "loop": true,
-"name": "talk",
+"name": "swim",
 "speed": 5.0
 } ]
 
@@ -124,7 +124,6 @@ script = ExtResource( 1 )
 scale = Vector2( 2.2, 2.2 )
 frames = SubResource( 1 )
 animation = "swim"
-frame = 2
 playing = true
 
 [node name="BodyCollision" type="CollisionShape2D" parent="."]
