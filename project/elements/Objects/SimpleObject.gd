@@ -17,19 +17,7 @@ func _ready():
 func interact(player):
 	var object_name = self.get_name().to_lower()
 	$Textbox.prepare_and_emit_text("", [dialog[object_name]])
-	remove_control(player)
+	player.disable_movement()
 	yield($Textbox, "textbox_done")
-	restore_control(player)
+	player.enable_movement()
 	emit_signal("interaction_finished")
-
-func remove_control(player):
-	if Global.control_mode == Global.ControlModes.virtual_gamepad:
-		VirtualGamepad.disable()
-	else:
-		player.controllable = false
-
-func restore_control(player):
-	if Global.control_mode == Global.ControlModes.virtual_gamepad:
-		VirtualGamepad.enable()
-	else:
-		player.controllable = true
