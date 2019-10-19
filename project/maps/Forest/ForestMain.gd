@@ -19,6 +19,7 @@ signal cutscene_walk_end
 
 func _ready():
 	set_process(false)
+	$Duco/AnimationPlayer.play("swim")
 	if (source_name == "ForestWake"):
 		$Player.disable_movement()
 		$Player.position = $Spawns/ForestWake.position
@@ -102,6 +103,8 @@ func _on_T1_body_entered(body):
 			
 			GlobalFade.fade_out()
 			yield(GlobalFade.tween, "tween_completed")
+			
+			flags.fm_second_cutscene = true
 			
 			# Add next map name
 #			Global.call_deferred("transition_to_scene", self, destination)
