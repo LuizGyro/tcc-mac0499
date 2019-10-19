@@ -8,6 +8,9 @@ var T1_cutscene_dialog_2 = ["Eu... lati? E o pato só me ignorou...",
 						"Que sonho estranho... eu vou voltar para onde eu acordei, e voltar a dormir."]
 var T1_cutscene_dialog_3 = ["Ah, então ele está aqui. Vamos conversar com ele. Deixa que eu te ajudo!"]
 var T1_cutscene_dialog_4 = ["EI! Duco! Faça um favor e venha aqui, por favor!"]
+var T1_cutscene_dialog_5 = ["E ai, velho Gasa! Tudo certo?", "Ih, você tá com aquele carinha estranho de antes, que mal sabe falar direito."]
+var T1_cutscene_dialog_6 = [str("Duco, tenha calma. O nome desse \"carinha\" é ", Global.player_name, ", e ele é novo por aqui."), "Gostaria de saber se você não gostaria de mostrar para ele como as coisas são por aqui."]
+var T1_cutscene_dialog_7 = ["Demorou, velho Gasa. Ei, parceirinho, vou te levar para conhecer a galerinha que mora por aqui. Somos poucos, mas estamos todos juntos. Sobe nas minhas costas, que eu te levo la!"]
 
 var explore_counter = 0
 
@@ -84,6 +87,22 @@ func _on_T1_body_entered(body):
 			$Triggers/T1/Tween.start()
 			yield($Triggers/T1/Tween, "tween_completed")
 			$Duco/Sprite.set_animation("idle")
-			body.enable_movement()
+			$Duco/AnimatedLabel/AnimationPlayer.play("!")
+			yield($Duco/AnimatedLabel/AnimationPlayer, "animation_finished")
+			$Duco/Sprite.set_animation("talk")
+			$Triggers/T1/Textbox.prepare_and_emit_text("Duco", T1_cutscene_dialog_5)
+			yield($Triggers/T1/Textbox, "textbox_done")
+			$Duco/Sprite.set_animation("idle")
+			$Triggers/T1/Textbox.prepare_and_emit_text("Gasa", T1_cutscene_dialog_6)
+			yield($Triggers/T1/Textbox, "textbox_done")
+			$Duco/Sprite.set_animation("talk")
+			$Triggers/T1/Textbox.prepare_and_emit_text("Duco", T1_cutscene_dialog_7)
+			yield($Triggers/T1/Textbox, "textbox_done")
+			$Duco/Sprite.set_animation("idle")
 			
+			GlobalFade.fade_out()
+			yield(GlobalFade.tween, "tween_completed")
+			
+			# Add next map name
+#			Global.call_deferred("transition_to_scene", self, destination)
 		

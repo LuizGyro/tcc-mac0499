@@ -58,6 +58,7 @@ destination = "res://maps/Forest/ForestWake.tscn"
 position = Vector2( 847.773, 1283.22 )
 
 [node name="Triggers" type="Node2D" parent="."]
+editor/display_folded = true
 
 [node name="T1" type="Area2D" parent="Triggers"]
 position = Vector2( 520.772, 1331.98 )

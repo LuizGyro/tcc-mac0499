@@ -20,6 +20,7 @@ func _on_MapPortal_body_entered(body):
 		player = body
 		
 		player.disable_movement()
+		# Redundant, now?
 		player.moving = false
 		VirtualGamepad.disable()
 		player.get_node("Sprite").set_animation("walk")
