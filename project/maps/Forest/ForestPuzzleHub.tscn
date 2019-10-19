@@ -60,7 +60,7 @@ position = Vector2( 64.1292, 1271.78 )
 
 [node name="Sprite" parent="Duco" index="0"]
 animation = "idle"
-frame = 2
+frame = 1
 
 [node name="Triggers" type="Node2D" parent="."]
 editor/display_folded = true
