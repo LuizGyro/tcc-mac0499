@@ -10,3 +10,6 @@ var fm_second_cutscene = true
 
 # ForestPuzzleHub
 var fph_first_cutscene = true
+
+# ForestPuzzleBottom
+var wb_puzzle = false

@@ -1,0 +1,63 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://elements/characters/mushroom/Shimmi.gd" type="Script" id=1]
+[ext_resource path="res://assets/characters/mushroom/mushroom_sad.png" type="Texture" id=2]
+[ext_resource path="res://elements/extras/AnimatedLabel.tscn" type="PackedScene" id=3]
+[ext_resource path="res://ui/Textbox.tscn" type="PackedScene" id=4]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 30.0
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 30, 25 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "panic"
+length = 1.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.3, 0.6, 0.9, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 1, 0.8 ), Vector2( 1, 1 ), Vector2( -1, 0.8 ), Vector2( -1, 1 ) ]
+}
+
+[node name="Shimmi" type="KinematicBody2D"]
+z_index = 1
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 0, 0.976471, 1, 1 )
+rotation = 1.5708
+scale = Vector2( 2.2, 2.2 )
+texture = ExtResource( 2 )
+
+[node name="BodyCollision" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource( 1 )
+
+[node name="InteractionBox" type="Area2D" parent="."]
+editor/display_folded = true
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionBox"]
+shape = SubResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/panic = SubResource( 3 )
+
+[node name="AnimatedLabel" parent="." instance=ExtResource( 3 )]
+editor/display_folded = true
+position = Vector2( -20, -40 )
+
+[node name="Textbox" parent="." instance=ExtResource( 4 )]
+
+
+[editable path="AnimatedLabel"]

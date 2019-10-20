@@ -6,13 +6,11 @@
 [ext_resource path="res://elements/characters/gasa/Gasa.tscn" type="PackedScene" id=4]
 [ext_resource path="res://maps/General/MapPortal.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/puzzles/poço.png" type="Texture" id=6]
-[ext_resource path="res://ui/Textbox.tscn" type="PackedScene" id=7]
+[ext_resource path="res://elements/characters/mushroom/Mushi.tscn" type="PackedScene" id=7]
+[ext_resource path="res://elements/characters/mushroom/Shimmi.tscn" type="PackedScene" id=8]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 18.4514, 16.9897 )
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 10, 123.346 )
 
 [node name="ForestPuzzleBottom" type="Node2D"]
 script = ExtResource( 1 )
@@ -60,9 +58,9 @@ portal_direction = Vector2( 0, -1 )
 destination = "res://maps/Forest/ForestPuzzleHub.tscn"
 
 [node name="Elements" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="Well" type="Sprite" parent="Elements"]
+editor/display_folded = true
 position = Vector2( 548.533, 1014.81 )
 scale = Vector2( 2, 2 )
 z_index = 1
@@ -74,42 +72,16 @@ texture = ExtResource( 6 )
 position = Vector2( -0.315155, 21.1134 )
 shape = SubResource( 2 )
 
-[node name="Triggers" type="Node2D" parent="."]
+[node name="Mushi" parent="Elements" instance=ExtResource( 7 )]
 editor/display_folded = true
-visible = false
+position = Vector2( 583.572, 1101.74 )
 
-[node name="T1" type="Area2D" parent="Triggers"]
-position = Vector2( 520.772, 1331.98 )
+[node name="Shimmi" parent="Elements" instance=ExtResource( 8 )]
+position = Vector2( 638.409, 1057.7 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/T1"]
-position = Vector2( -32.649, -6.80188 )
-shape = SubResource( 1 )
-
-[node name="Timer" type="Timer" parent="Triggers/T1"]
-wait_time = 1.2
-one_shot = true
-
-[node name="ThoughtBox" parent="Triggers/T1" instance=ExtResource( 7 )]
-editor/display_folded = true
-
-[node name="NameBoxOut" parent="Triggers/T1/ThoughtBox/CanvasLayer/Boxes" index="0"]
-visible = false
-
-[node name="NameBoxIn" parent="Triggers/T1/ThoughtBox/CanvasLayer/Boxes" index="1"]
-visible = false
-
-[node name="Name" parent="Triggers/T1/ThoughtBox/CanvasLayer/Boxes" index="2"]
-visible = false
-
-[node name="Text" parent="Triggers/T1/ThoughtBox/CanvasLayer/Boxes" index="5"]
-custom_colors/font_color = Color( 0.14902, 0.933333, 0.282353, 1 )
-
-[node name="Textbox" parent="Triggers/T1" instance=ExtResource( 7 )]
-
-[node name="Tween" type="Tween" parent="Triggers/T1"]
-
-[connection signal="body_entered" from="Triggers/T1" to="." method="_on_T1_body_entered"]
 
 [editable path="Player"]
 
-[editable path="Triggers/T1/ThoughtBox"]
+[editable path="Elements/Mushi"]
+
+[editable path="Elements/Mushi/ThoughtBox"]

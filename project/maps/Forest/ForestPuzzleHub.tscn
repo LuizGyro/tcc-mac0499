@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://maps/Forest/ForestPuzzleHub.gd" type="Script" id=1]
 [ext_resource path="res://maps/Forest/ForestTileMap.tscn" type="PackedScene" id=2]
@@ -7,12 +7,12 @@
 [ext_resource path="res://elements/characters/duco/Duco.tscn" type="PackedScene" id=5]
 [ext_resource path="res://maps/General/MapPortal.tscn" type="PackedScene" id=6]
 [ext_resource path="res://ui/Textbox.tscn" type="PackedScene" id=7]
+[ext_resource path="res://elements/Objects/SimpleObject.tscn" type="PackedScene" id=8]
 
 [node name="ForestPuzzleHub" type="Node2D"]
 script = ExtResource( 1 )
 
 [node name="Map" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="ForestTileMapLow" parent="Map" instance=ExtResource( 2 )]
 scale = Vector2( 3, 3 )
@@ -50,7 +50,6 @@ z_index = 0
 
 [node name="Sprite" parent="Duco" index="0"]
 animation = "idle"
-frame = 0
 
 [node name="Spawns" type="Node2D" parent="."]
 editor/display_folded = true
@@ -98,6 +97,11 @@ visible = false
 
 [node name="Text" parent="Cutscenes/ThoughtBox/CanvasLayer/Boxes" index="5"]
 custom_colors/font_color = Color( 0.14902, 0.933333, 0.282353, 1 )
+
+[node name="Elements" type="Node2D" parent="."]
+
+[node name="SchoolSign" parent="Elements" instance=ExtResource( 8 )]
+position = Vector2( 312.194, 786.73 )
 
 
 [editable path="Player"]
