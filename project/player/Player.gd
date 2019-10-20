@@ -104,6 +104,7 @@ func set_sprite_and_interaction_direction(direction):
 func clicked_on(object):
 	var mouse_pos = get_viewport().get_mouse_position()
 	var absolute_object_position = object.get_global_transform_with_canvas().origin
+	print(str("Absolute object position: ", absolute_object_position))
 	
 	var posx = absolute_object_position.x
 	var posy = absolute_object_position.y
@@ -112,11 +113,13 @@ func clicked_on(object):
 	print(sizex)
 	print(sizey)
 	
-	
-	var min_x = posx - (sizex/2)
-	var min_y = posy - (sizey/2)
-	var max_x = posx + (sizex/2)
-	var max_y = posy + (sizey/2)
+	# We do not divide by 2 here, even though position is centered, is because
+	# sizes are obtained using a shape's extent (play with a rectangle's extent
+	# to verify how it behaves)
+	var min_x = posx - sizex
+	var min_y = posy - sizey
+	var max_x = posx + sizex
+	var max_y = posy + sizey
 	
 	print(mouse_pos)
 	print(str("min_x: ", min_x, " min_y: ", min_y, " max_x: ", max_x, " max_y: ", max_y))

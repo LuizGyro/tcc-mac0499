@@ -1,20 +1,18 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://maps/Forest/ForestPuzzleHub.gd" type="Script" id=1]
 [ext_resource path="res://maps/Forest/ForestTileMap.tscn" type="PackedScene" id=2]
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://elements/characters/gasa/Gasa.tscn" type="PackedScene" id=4]
-[ext_resource path="res://maps/General/MapPortal.tscn" type="PackedScene" id=5]
-[ext_resource path="res://elements/characters/duco/Duco.tscn" type="PackedScene" id=6]
+[ext_resource path="res://elements/characters/duco/Duco.tscn" type="PackedScene" id=5]
+[ext_resource path="res://maps/General/MapPortal.tscn" type="PackedScene" id=6]
 [ext_resource path="res://ui/Textbox.tscn" type="PackedScene" id=7]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 10, 123.346 )
-
-[node name="ForestMain" type="Node2D"]
+[node name="ForestPuzzleHub" type="Node2D"]
 script = ExtResource( 1 )
 
 [node name="Map" type="Node2D" parent="."]
+editor/display_folded = true
 
 [node name="ForestTileMapLow" parent="Map" instance=ExtResource( 2 )]
 scale = Vector2( 3, 3 )
@@ -29,7 +27,11 @@ tile_data = PoolIntArray( 458732, 18, 3, 458733, 18, 131075, 458734, 18, 131075,
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 editor/display_folded = true
-position = Vector2( 380.018, 1209.88 )
+position = Vector2( -30, 1271 )
+
+[node name="Sprite" parent="Player" index="0"]
+animation = "idle"
+frame = 2
 
 [node name="CustomCamera" parent="Player" index="3"]
 zoom = Vector2( 0.65, 0.65 )
@@ -41,65 +43,65 @@ limit_bottom = 1700
 [node name="Gasa" parent="." instance=ExtResource( 4 )]
 position = Vector2( -959.334, 284.554 )
 
+[node name="Duco" parent="." instance=ExtResource( 5 )]
+editor/display_folded = true
+position = Vector2( 64, 1271 )
+z_index = 0
+
+[node name="Sprite" parent="Duco" index="0"]
+animation = "idle"
+frame = 0
+
 [node name="Spawns" type="Node2D" parent="."]
 editor/display_folded = true
-visible = false
 
 [node name="ForestPuzzleBottom" type="Position2D" parent="Spawns"]
 position = Vector2( 187.696, 1563.18 )
 
-[node name="MapPortal" parent="." instance=ExtResource( 5 )]
-visible = false
-position = Vector2( -504.563, 185.641 )
-portal_direction = Vector2( -1, 0 )
-destination = "res://maps/Forest/ForestWake.tscn"
+[node name="MapPortal" parent="." instance=ExtResource( 6 )]
+position = Vector2( 208.114, 1653.79 )
+rotation = 1.5708
+scale = Vector2( 1, 3 )
+portal_direction = Vector2( 0, 1 )
+destination = "res://maps/Forest/ForestPuzzleBottom.tscn"
 
-[node name="Duco" parent="." instance=ExtResource( 6 )]
+[node name="Cutscenes" type="Node2D" parent="."]
 editor/display_folded = true
-position = Vector2( 64.1292, 1271.78 )
 
-[node name="Sprite" parent="Duco" index="0"]
-animation = "idle"
-frame = 1
-
-[node name="Triggers" type="Node2D" parent="."]
+[node name="C1" type="Node2D" parent="Cutscenes"]
 editor/display_folded = true
-visible = false
 
-[node name="T1" type="Area2D" parent="Triggers"]
-position = Vector2( 520.772, 1331.98 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/T1"]
-position = Vector2( -32.649, -6.80188 )
-shape = SubResource( 1 )
-
-[node name="Timer" type="Timer" parent="Triggers/T1"]
-wait_time = 1.2
+[node name="Timer" type="Timer" parent="Cutscenes/C1"]
+wait_time = 1.5
 one_shot = true
 
-[node name="ThoughtBox" parent="Triggers/T1" instance=ExtResource( 7 )]
+[node name="Textbox" parent="Cutscenes" instance=ExtResource( 7 )]
+
+[node name="ThoughtBox" parent="Cutscenes" instance=ExtResource( 7 )]
+editor/display_folded = true
+margin_left = 520.772
+margin_top = 1331.98
+margin_right = 520.772
+margin_bottom = 1331.98
+
+[node name="Boxes" parent="Cutscenes/ThoughtBox/CanvasLayer" index="0"]
 editor/display_folded = true
 
-[node name="NameBoxOut" parent="Triggers/T1/ThoughtBox/CanvasLayer/Boxes" index="0"]
+[node name="NameBoxOut" parent="Cutscenes/ThoughtBox/CanvasLayer/Boxes" index="0"]
 visible = false
 
-[node name="NameBoxIn" parent="Triggers/T1/ThoughtBox/CanvasLayer/Boxes" index="1"]
+[node name="NameBoxIn" parent="Cutscenes/ThoughtBox/CanvasLayer/Boxes" index="1"]
 visible = false
 
-[node name="Name" parent="Triggers/T1/ThoughtBox/CanvasLayer/Boxes" index="2"]
+[node name="Name" parent="Cutscenes/ThoughtBox/CanvasLayer/Boxes" index="2"]
 visible = false
 
-[node name="Text" parent="Triggers/T1/ThoughtBox/CanvasLayer/Boxes" index="5"]
+[node name="Text" parent="Cutscenes/ThoughtBox/CanvasLayer/Boxes" index="5"]
 custom_colors/font_color = Color( 0.14902, 0.933333, 0.282353, 1 )
 
-[node name="Textbox" parent="Triggers/T1" instance=ExtResource( 7 )]
-
-[node name="Tween" type="Tween" parent="Triggers/T1"]
-
-[connection signal="body_entered" from="Triggers/T1" to="." method="_on_T1_body_entered"]
 
 [editable path="Player"]
 
 [editable path="Duco"]
 
-[editable path="Triggers/T1/ThoughtBox"]
+[editable path="Cutscenes/ThoughtBox"]

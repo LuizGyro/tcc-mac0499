@@ -5,16 +5,16 @@
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://elements/characters/gasa/Gasa.tscn" type="PackedScene" id=4]
 [ext_resource path="res://maps/General/MapPortal.tscn" type="PackedScene" id=5]
-[ext_resource path="res://ui/Textbox.tscn" type="PackedScene" id=6]
-[ext_resource path="res://assets/puzzles/poço.png" type="Texture" id=7]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 10, 123.346 )
+[ext_resource path="res://assets/puzzles/poço.png" type="Texture" id=6]
+[ext_resource path="res://ui/Textbox.tscn" type="PackedScene" id=7]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 18.4514, 16.9897 )
 
-[node name="ForestMain" type="Node2D"]
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 10, 123.346 )
+
+[node name="ForestPuzzleBottom" type="Node2D"]
 script = ExtResource( 1 )
 
 [node name="Map" type="Node2D" parent="."]
@@ -33,7 +33,7 @@ tile_data = PoolIntArray( 917484, 18, 3, 917485, 18, 131075, 917486, 18, 131075,
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 editor/display_folded = true
-position = Vector2( 193.008, 929.365 )
+position = Vector2( 192, 800 )
 
 [node name="CustomCamera" parent="Player" index="3"]
 zoom = Vector2( 0.65, 0.65 )
@@ -49,14 +49,30 @@ position = Vector2( -959.334, 284.554 )
 editor/display_folded = true
 
 [node name="ForestPuzzleHub" type="Position2D" parent="Spawns"]
-position = Vector2( 192.776, 939.251 )
+position = Vector2( 192, 800 )
 scale = Vector2( 0.953511, 6.84234 )
 
 [node name="MapPortal" parent="." instance=ExtResource( 5 )]
-visible = false
-position = Vector2( -504.563, 185.641 )
-portal_direction = Vector2( -1, 0 )
-destination = "res://maps/Forest/ForestWake.tscn"
+position = Vector2( 192.341, 722.023 )
+rotation = 1.5708
+scale = Vector2( 1, 3 )
+portal_direction = Vector2( 0, -1 )
+destination = "res://maps/Forest/ForestPuzzleHub.tscn"
+
+[node name="Elements" type="Node2D" parent="."]
+editor/display_folded = true
+
+[node name="Well" type="Sprite" parent="Elements"]
+position = Vector2( 548.533, 1014.81 )
+scale = Vector2( 2, 2 )
+z_index = 1
+texture = ExtResource( 6 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Elements/Well"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Elements/Well/StaticBody2D"]
+position = Vector2( -0.315155, 21.1134 )
+shape = SubResource( 2 )
 
 [node name="Triggers" type="Node2D" parent="."]
 editor/display_folded = true
@@ -73,7 +89,7 @@ shape = SubResource( 1 )
 wait_time = 1.2
 one_shot = true
 
-[node name="ThoughtBox" parent="Triggers/T1" instance=ExtResource( 6 )]
+[node name="ThoughtBox" parent="Triggers/T1" instance=ExtResource( 7 )]
 editor/display_folded = true
 
 [node name="NameBoxOut" parent="Triggers/T1/ThoughtBox/CanvasLayer/Boxes" index="0"]
@@ -88,23 +104,9 @@ visible = false
 [node name="Text" parent="Triggers/T1/ThoughtBox/CanvasLayer/Boxes" index="5"]
 custom_colors/font_color = Color( 0.14902, 0.933333, 0.282353, 1 )
 
-[node name="Textbox" parent="Triggers/T1" instance=ExtResource( 6 )]
+[node name="Textbox" parent="Triggers/T1" instance=ExtResource( 7 )]
 
 [node name="Tween" type="Tween" parent="Triggers/T1"]
-
-[node name="Elements" type="Node2D" parent="."]
-
-[node name="Well" type="Sprite" parent="Elements"]
-position = Vector2( 548.533, 1014.81 )
-scale = Vector2( 2, 2 )
-z_index = 1
-texture = ExtResource( 7 )
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Elements/Well"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Elements/Well/StaticBody2D"]
-position = Vector2( -0.315155, 21.1134 )
-shape = SubResource( 2 )
 
 [connection signal="body_entered" from="Triggers/T1" to="." method="_on_T1_body_entered"]
 

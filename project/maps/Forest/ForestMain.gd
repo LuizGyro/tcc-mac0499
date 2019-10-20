@@ -17,6 +17,8 @@ var explore_counter = 0
 var cutscene_walk_counter = 0
 signal cutscene_walk_end
 
+var second_cutscene_destination = "res://maps/Forest/ForestPuzzleHub.tscn"
+
 func _ready():
 	set_process(false)
 	$Duco/AnimationPlayer.play("swim")
@@ -107,5 +109,5 @@ func _on_T1_body_entered(body):
 			flags.fm_second_cutscene = true
 			
 			# Add next map name
-#			Global.call_deferred("transition_to_scene", self, destination)
+			Global.call_deferred("transition_to_scene", self, second_cutscene_destination)
 		

@@ -4,9 +4,13 @@ extends Node2D
 var source_name = "none"
 
 func _ready():
-	# Make initial cutscene
-	
-	# This will be inside each for. Check other maps for
-	# examples on where to place this.
-	$Gasa.position = $Player.position - Vector2(0, 40)
-	$Gasa/Sprite.scale.x = abs($Gasa/Sprite.scale.x) * sign($Player/Sprite.scale.x)
+	if (source_name == "ForestPuzzleHub"):
+		$Player.disable_movement()
+		$Player.position = $Spawns/ForestPuzzleHub.position
+		# Easy way to turn around
+		$Player.move_to_absolute(Vector2(0, 1))
+		$Gasa.position = $Player.position - Vector2(0, 40)
+		$Gasa/Sprite.scale.x = abs($Gasa/Sprite.scale.x) * sign($Player/Sprite.scale.x)
+		GlobalFade.fade_in()
+		yield(GlobalFade.tween, "tween_completed")
+		$Player.enable_movement()
