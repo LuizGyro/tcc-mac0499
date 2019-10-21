@@ -1,5 +1,7 @@
 extends Node2D
 
+var active = true
+
 var dragging = false
 var initiator = false
 
@@ -20,6 +22,9 @@ func _ready():
 	set_process(true)
 
 func _input(event):
+	if !active:
+		return
+	
 	if event.is_action_pressed("touch") and clicked_on(self):
 		dragging = true
 		initiator = true
