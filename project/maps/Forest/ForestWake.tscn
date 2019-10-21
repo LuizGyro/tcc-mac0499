@@ -210,7 +210,7 @@ position = Vector2( 700, 390 )
 
 [node name="Sprite" parent="Player" index="0"]
 animation = "sleep"
-frame = 1
+frame = 0
 
 [node name="CustomCamera" parent="Player" index="3"]
 zoom = Vector2( 0.65, 0.65 )

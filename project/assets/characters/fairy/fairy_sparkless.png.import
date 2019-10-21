@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/fairy 2.png-4ba29e71c31de66ef91243d300760acd.stex"
+path="res://.import/fairy_sparkless.png-56090e736dbc054e7a24a3d353ec23ad.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/characters/fairy 2.png"
-dest_files=[ "res://.import/fairy 2.png-4ba29e71c31de66ef91243d300760acd.stex" ]
+source_file="res://assets/characters/fairy/fairy_sparkless.png"
+dest_files=[ "res://.import/fairy_sparkless.png-56090e736dbc054e7a24a3d353ec23ad.stex" ]
 
 [params]
 

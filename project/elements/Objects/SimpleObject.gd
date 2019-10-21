@@ -7,7 +7,7 @@ extends Node2D
 signal interaction_finished
 
 var dialog = {"firsttrunk" : "Este tronco é bastante confortável, por algum motivo...",
-			"schoosign" : "Escola e área de recreação acima.",  
+			"schoolsign" : "Escola e área de recreação acima.",  
 			"dummy" : "dummy" }
 			
 var size
