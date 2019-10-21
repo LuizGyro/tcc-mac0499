@@ -21,9 +21,7 @@ var player_name = "Shell"
 func transition_to_puzzle(o_scene, puzzle_name):
 	overworld_scene = o_scene
 	get_tree().get_root().remove_child(o_scene)
-	# Load puzzle scene here
-	# Testing
-	var puzzle_scene_path = "res://puzzles/TestPuzzle/TestPuzzle.tscn"
+	var puzzle_scene_path = str("res://puzzles/", puzzle_name, "/", puzzle_name, ".tscn")
 	var p_scene = load(puzzle_scene_path)
 	var p_instance = p_scene.instance()
 	puzzle_scene = p_instance

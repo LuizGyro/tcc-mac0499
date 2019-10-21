@@ -52,6 +52,8 @@ shape = SubResource( 2 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/panic = SubResource( 3 )
 
+[node name="Tween" type="Tween" parent="."]
+
 [node name="AnimatedLabel" parent="." instance=ExtResource( 3 )]
 editor/display_folded = true
 position = Vector2( -20, -40 )
@@ -59,6 +61,7 @@ position = Vector2( -20, -40 )
 [node name="Textbox" parent="." instance=ExtResource( 4 )]
 
 [node name="ThoughtBox" parent="." instance=ExtResource( 4 )]
+editor/display_folded = true
 
 [node name="NameBoxOut" parent="ThoughtBox/CanvasLayer/Boxes" index="0"]
 visible = false

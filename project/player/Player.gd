@@ -8,6 +8,9 @@ var speed = Vector2(100, 100)
 
 var virtual_gamepad_direction = Vector2(0, 0)
 
+onready var tween = $Tween
+var default_camera_zoom = Vector2(0.65, 0.65)
+
 func _ready():
 	if (Global.control_mode == Global.ControlModes.direct):
 		set_process_input(true)
@@ -169,3 +172,17 @@ func enable_movement():
 		set_process_input(true)
 	if Global.control_mode == Global.ControlModes.virtual_gamepad:
 		VirtualGamepad.enable()
+		
+##############################################################################################
+##################################### Camera Manipulation ####################################
+##############################################################################################
+
+func big_zoom():
+	tween.interpolate_property($CustomCamera, "zoom", $CustomCamera.zoom, $CustomCamera.zoom/3, 2.2, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
+	tween.start()
+
+func set_zoom(zoom):
+	$CustomCamera.zoom = zoom
+
+func reset_camera():
+	$CustomCamera.zoom = default_camera_zoom

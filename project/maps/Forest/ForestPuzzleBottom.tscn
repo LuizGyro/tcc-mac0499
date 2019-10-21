@@ -9,7 +9,7 @@
 [ext_resource path="res://elements/characters/mushroom/Mushi.tscn" type="PackedScene" id=7]
 [ext_resource path="res://elements/characters/mushroom/Shimmi.tscn" type="PackedScene" id=8]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 18.4514, 16.9897 )
 
 [node name="ForestPuzzleBottom" type="Node2D"]
@@ -30,7 +30,6 @@ tile_data = PoolIntArray( 917484, 18, 3, 917485, 18, 131075, 917486, 18, 131075,
 [node name="Boundaries" type="Node2D" parent="Map"]
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
-editor/display_folded = true
 position = Vector2( 192, 800 )
 
 [node name="CustomCamera" parent="Player" index="3"]
@@ -70,7 +69,7 @@ texture = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Elements/Well/StaticBody2D"]
 position = Vector2( -0.315155, 21.1134 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="Mushi" parent="Elements" instance=ExtResource( 7 )]
 editor/display_folded = true

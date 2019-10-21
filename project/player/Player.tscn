@@ -78,5 +78,7 @@ shape = SubResource( 3 )
 editor/display_folded = true
 position = Vector2( 10, -30 )
 
+[node name="Tween" type="Tween" parent="."]
+
 
 [editable path="AnimatedLabel"]
