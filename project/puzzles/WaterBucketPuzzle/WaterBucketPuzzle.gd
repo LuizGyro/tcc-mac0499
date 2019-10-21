@@ -3,11 +3,16 @@ extends Control
 # Normalmente, o padrão é false
 var puzzle_solved = false
 
+var puzzle_intro_text = ["Ajude Mushi a obter 4 litros de água no balde grande! O balde grande comporta 5 litros, enquanto o pequeno comporta 3 litros.", "Arraste baldes entre si, ou no poço! No poço, é apenas possível esvaziar completamente um balde, ou preenche-lo completamente.", "Arrastar um balde em outro faz com que seus conteúdos sejam despejados completamente no outro."]
+
 signal puzzle_solved
 
 func _ready():
-	GlobalFade.fade_in()
-	yield(GlobalFade.tween, "tween_completed")
+#	GlobalFade.fade_in()
+#	yield(GlobalFade.tween, "tween_completed")
+#	$Intro/Introbox.prepare_and_emit_text("", puzzle_intro_text, "pop_in_center", "pop_out")
+#	yield($Intro/Introbox, "textbox_done")
+	$Intro/Blur.hide()
 
 # Essa função se liga ao SubmitButton, para que transicionemos
 # para a tela em que a solução é entregue. Esta pode ser filha
