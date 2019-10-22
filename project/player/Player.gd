@@ -9,7 +9,7 @@ var speed = Vector2(100, 100)
 var virtual_gamepad_direction = Vector2(0, 0)
 
 onready var tween = $Tween
-var default_camera_zoom = Vector2(0.65, 0.65)
+var default_camera_zoom = Vector2(0.5, 0.5)
 
 func _ready():
 	if (Global.control_mode == Global.ControlModes.direct):

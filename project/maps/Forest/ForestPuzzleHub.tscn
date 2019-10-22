@@ -29,14 +29,13 @@ tile_data = PoolIntArray( 458732, 18, 3, 458733, 18, 131075, 458734, 18, 131075,
 [node name="Boundaries" type="Node2D" parent="Map"]
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
-editor/display_folded = true
 position = Vector2( -30, 1271 )
 
 [node name="Sprite" parent="Player" index="0"]
 animation = "idle"
 
 [node name="CustomCamera" parent="Player" index="3"]
-zoom = Vector2( 0.65, 0.65 )
+zoom = Vector2( 0.5, 0.5 )
 limit_left = -500
 limit_top = 550
 limit_right = 1100
@@ -52,7 +51,6 @@ z_index = 0
 
 [node name="Sprite" parent="Duco" index="0"]
 animation = "idle"
-frame = 1
 
 [node name="Spawns" type="Node2D" parent="."]
 

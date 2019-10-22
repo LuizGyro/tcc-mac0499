@@ -29,7 +29,6 @@ tile_data = PoolIntArray( -524296, 18, 3, -524295, 18, 131075, -524294, 18, 1310
 [node name="Boundaries" type="Node2D" parent="Map"]
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
-editor/display_folded = true
 position = Vector2( 380.018, 1209.88 )
 
 [node name="CustomCamera" parent="Player" index="3"]

@@ -56,6 +56,7 @@ func _ready():
 			$Gasa.active = true
 			$Gasa.position = $Player.position - Vector2(0, 40)
 			$Gasa/Sprite.scale.x = abs($Gasa/Sprite.scale.x) * sign($Player/Sprite.scale.x)
+		$Player.reset_camera()
 		GlobalFade.fade_in()
 		yield(GlobalFade.tween, "tween_completed")
 		$Player.enable_movement()

@@ -252,7 +252,6 @@ one_shot = true
 
 [node name="Thoughtbox" parent="Cutscene" instance=ExtResource( 5 )]
 editor/display_folded = true
-auto_vg = false
 
 [node name="NameBoxOut" parent="Cutscene/Thoughtbox/CanvasLayer/Boxes" index="0"]
 visible = false
