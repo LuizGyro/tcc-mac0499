@@ -1,5 +1,8 @@
 extends Control
 
+# A little hack to make use of global.transition_to_scene()
+var source_name = "none"
+
 const intro_text = ["Você se lembra?",
 					"Você se lembra de algo?",
 					"Você se lembra quem você é?",

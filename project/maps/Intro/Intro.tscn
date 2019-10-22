@@ -69,7 +69,6 @@ stream = ExtResource( 2 )
 volume_db = -80.0
 
 [node name="BlackFade" type="ColorRect" parent="."]
-editor/display_folded = true
 margin_right = 1920.0
 margin_bottom = 1080.0
 mouse_filter = 2
