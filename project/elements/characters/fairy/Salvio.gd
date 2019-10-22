@@ -16,6 +16,8 @@ func interact(player):
 	if (choice == 1):
 		# Dialogo, animação, etc
 		save_game()
+		$Textbox.prepare_and_emit_text("Salvio", ["Prontinho. Volte a qualquer momento!"])
+		yield($Textbox, "textbox_done")
 	elif (choice == 2):
 		$Textbox.prepare_and_emit_text("Salvio", ["Sem problemas. Volte a qualquer momento!"])
 		yield($Textbox, "textbox_done")
@@ -25,7 +27,8 @@ func save_game():
 	var savegame = File.new()
 	var savedata = save_data()
 	savegame.open("user://savegame.save", File.WRITE)
-	savegame.store_line(savedata.to_json())
+	savegame.store_line(to_json(savedata))
+	print(to_json(savedata))
 	savegame.close()
 	
 func save_data():

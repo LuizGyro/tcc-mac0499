@@ -34,6 +34,7 @@ position = Vector2( -30, 1271 )
 
 [node name="Sprite" parent="Player" index="0"]
 animation = "idle"
+frame = 0
 
 [node name="CustomCamera" parent="Player" index="3"]
 zoom = Vector2( 0.65, 0.65 )
@@ -52,7 +53,7 @@ z_index = 0
 
 [node name="Sprite" parent="Duco" index="0"]
 animation = "idle"
-frame = 1
+frame = 0
 
 [node name="Spawns" type="Node2D" parent="."]
 editor/display_folded = true

@@ -1,16 +1,18 @@
 extends Control
 
 func _ready():
+	VirtualGamepad.disable()
 	var savegame = File.new()
 	if !savegame.file_exists("user://savegame.save"):
 		$CanvasLayer/MainMenu/Continuar.disabled = true
 	else:
 		savegame.open("user://savegame.save", File.READ)
 		var savedata = {}
-		savedata.parse_json(savegame.get_as_text())
+		savedata = parse_json(savegame.get_as_text())
 		savegame.close()
 		
 		# Use savedata here to choose default control_mode
+		Global.control_mode = savedata.control_mode
 
 func disable_buttons():
 	for button in $CanvasLayer/MainMenu.get_children():
