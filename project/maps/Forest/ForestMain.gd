@@ -67,7 +67,7 @@ func _on_T1_body_entered(body):
 			yield($Triggers/T1/ThoughtBox, "textbox_done")
 			body.enable_movement()
 			flags.fm_first_cutscene = true
-	elif !flags.fm_second_cutscene:
+	elif (flags.fw_second_cutscene and !flags.fm_second_cutscene):
 		if (body.get_name().to_lower() == "player"):
 			body.disable_movement()
 			body.get_node("Sprite").set_animation("idle")
