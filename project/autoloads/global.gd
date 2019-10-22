@@ -1,7 +1,7 @@
 extends Node
 
 enum ControlModes {direct, virtual_gamepad}
-var control_mode = ControlModes.direct
+var control_mode = ControlModes.virtual_gamepad
 
 var overworld_scene = "dummy"
 var puzzle_scene

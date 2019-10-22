@@ -16,8 +16,6 @@ var waiting_next = false
 # O que vai precisar provavelmente: se tem animação de entrada/saida da caixa,
 # o portrait, o nome do personagem, o texto, se a cena sera invertida (horizontal)
 func prepare_and_emit_options(option1="Sim", option2="Não", in_animation="slide_in", out_animation="slide_out"):
-	VirtualGamepad.disable()
-	
 	$CanvasLayer/Boxes/Option1.set_text(option1)
 	$CanvasLayer/Boxes/Option2.set_text(option2)
 	
@@ -29,8 +27,6 @@ func prepare_and_emit_options(option1="Sim", option2="Não", in_animation="slide
 	$CanvasLayer/Boxes/AnimationPlayer.play(out_animation)
 	yield($CanvasLayer/Boxes/AnimationPlayer, "animation_finished")
 	
-	if (Global.control_mode == Global.ControlModes.virtual_gamepad):
-		VirtualGamepad.enable()
 	emit_signal("choicebox_done", choice)
 
 func _on_Option1_pressed():

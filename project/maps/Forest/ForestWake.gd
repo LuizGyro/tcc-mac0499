@@ -81,7 +81,7 @@ func _on_T1_body_entered(body):
 			yield($Cutscene/Tween, "tween_completed")
 			$Cutscene/Textbox.prepare_and_emit_text("Gasa", second_cutscene_dialog_3)
 			yield($Cutscene/Textbox, "textbox_done")
-			$Cutscene/ChoiceBox.prepare_and_emit_options("Yeah", "Nah")
+			$Cutscene/ChoiceBox.prepare_and_emit_options("Aceitar", "Recusar")
 			var choice = yield($Cutscene/ChoiceBox, "choicebox_done")
 			while (choice != 1):
 				$Cutscene/Textbox.prepare_and_emit_text("Gasa", second_cutscene_option_2)
