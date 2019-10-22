@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/poço.png-4c119856715a877fb9e968b8b1b32965.stex"
+path="res://.import/poco.png-55b35a2b7aa6ff4216e871d678985255.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/puzzles/poço.png"
-dest_files=[ "res://.import/poço.png-4c119856715a877fb9e968b8b1b32965.stex" ]
+source_file="res://assets/puzzles/poco.png"
+dest_files=[ "res://.import/poco.png-55b35a2b7aa6ff4216e871d678985255.stex" ]
 
 [params]
 

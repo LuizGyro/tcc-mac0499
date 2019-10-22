@@ -5,7 +5,7 @@
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://elements/characters/gasa/Gasa.tscn" type="PackedScene" id=4]
 [ext_resource path="res://maps/General/MapPortal.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/puzzles/poço.png" type="Texture" id=6]
+[ext_resource path="res://assets/puzzles/poco.png" type="Texture" id=6]
 [ext_resource path="res://elements/characters/mushroom/Mushi.tscn" type="PackedScene" id=7]
 [ext_resource path="res://elements/characters/mushroom/Shimmi.tscn" type="PackedScene" id=8]
 
@@ -59,7 +59,6 @@ destination = "res://maps/Forest/ForestPuzzleHub.tscn"
 [node name="Elements" type="Node2D" parent="."]
 
 [node name="Well" type="Sprite" parent="Elements"]
-editor/display_folded = true
 position = Vector2( 548.533, 1014.81 )
 scale = Vector2( 2, 2 )
 z_index = 1
