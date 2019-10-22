@@ -5,7 +5,7 @@
 [ext_resource path="res://ui/Textbox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://ui/ChoiceBox.tscn" type="PackedScene" id=4]
 
-[sub_resource type="CircleShape2D" id=4]
+[sub_resource type="CircleShape2D" id=1]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 30, 25 )
@@ -37,7 +37,7 @@ scale = Vector2( 2.2, 2.2 )
 texture = ExtResource( 2 )
 
 [node name="DisabledCollision" type="CollisionShape2D" parent="."]
-shape = SubResource( 4 )
+shape = SubResource( 1 )
 disabled = true
 
 [node name="InteractionBox" type="Area2D" parent="."]

@@ -29,4 +29,14 @@ func save_game():
 	savegame.close()
 	
 func save_data():
-	pass
+	var savedict = {
+		map = get_parent().get_name(),
+		
+		control_mode = Global.control_mode,
+		player_name = Global.player_name,
+		pxp = Global.pxp,
+		
+		flags_values = flags.get_current_values()
+		}
+		
+	return savedict
