@@ -19,6 +19,10 @@ func disable_buttons():
 		button.disabled = true
 
 func _on_Novo_pressed():
+	# For safety, reset all flags
+	for flag in flags.get_names():
+		flags.set(flag, false)
+	
 	disable_buttons()
 	$CanvasLayer/BlackFade.show()
 	$CanvasLayer/BlackFade/AnimationPlayer.play("fade_out")
@@ -27,8 +31,30 @@ func _on_Novo_pressed():
 
 
 func _on_Continuar_pressed():
-	pass # Replace with function body.
-
+	var savegame = File.new()
+	savegame.open("user://savegame.save", File.READ)
+	var savedata = {}
+	savedata = parse_json(savegame.get_as_text())
+	savegame.close()
+	
+	var map = savedata.map
+	
+	Global.player_name = savedata.player_name
+	Global.pxp = savedata.pxp
+	
+	var f_i = 0
+	for flag in flags.get_names():
+		flags.set(flag, savedata.flags_values[f_i])
+#		print(str(flag, ": ", savedata.flags_values[f_i]))
+		f_i += 1
+	
+	disable_buttons()
+	$CanvasLayer/BlackFade.show()
+	$CanvasLayer/BlackFade/AnimationPlayer.play("fade_out")
+	yield($CanvasLayer/BlackFade/AnimationPlayer, "animation_finished")
+	GlobalFade.fade_out()
+	yield(GlobalFade.tween, "tween_completed")
+	Global.call_deferred("transition_to_scene", self, map)
 
 func _on_Opes_pressed():
 	$CanvasLayer/MainMenu.hide()

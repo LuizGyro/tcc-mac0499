@@ -37,3 +37,13 @@ func _ready():
 		GlobalFade.fade_in()
 		yield(GlobalFade.tween, "tween_completed")
 		$Player.enable_movement()
+	elif (source_name == "TitleScreen"):
+		$Player.disable_movement()
+		$Player.position = $Spawns/TitleScreen.position
+		# Easy way to turn around
+		$Player.move_to_absolute(Vector2(-1, 0))
+		$Gasa.position = $Player.position - Vector2(0, 40)
+		$Gasa/Sprite.scale.x = abs($Gasa/Sprite.scale.x) * sign($Player/Sprite.scale.x)
+		GlobalFade.fade_in()
+		yield(GlobalFade.tween, "tween_completed")
+		$Player.enable_movement()

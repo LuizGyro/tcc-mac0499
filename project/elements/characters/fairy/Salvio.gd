@@ -33,7 +33,7 @@ func save_game():
 	
 func save_data():
 	var savedict = {
-		map = get_parent().get_name(),
+		map = get_parent().filename,
 		
 		control_mode = Global.control_mode,
 		player_name = Global.player_name,

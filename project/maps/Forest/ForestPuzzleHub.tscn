@@ -34,7 +34,6 @@ position = Vector2( -30, 1271 )
 
 [node name="Sprite" parent="Player" index="0"]
 animation = "idle"
-frame = 0
 
 [node name="CustomCamera" parent="Player" index="3"]
 zoom = Vector2( 0.65, 0.65 )
@@ -53,13 +52,15 @@ z_index = 0
 
 [node name="Sprite" parent="Duco" index="0"]
 animation = "idle"
-frame = 0
+frame = 1
 
 [node name="Spawns" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="ForestPuzzleBottom" type="Position2D" parent="Spawns"]
 position = Vector2( 187.696, 1563.18 )
+
+[node name="TitleScreen" type="Position2D" parent="Spawns"]
+position = Vector2( -199.98, 841.868 )
 
 [node name="MapPortal" parent="." instance=ExtResource( 6 )]
 position = Vector2( 208.114, 1653.79 )
