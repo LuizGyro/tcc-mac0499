@@ -29,7 +29,6 @@ tracks/0/keys = {
 }
 
 [node name="Mushi" type="KinematicBody2D"]
-scale = Vector2( -1, 0.9 )
 z_index = 1
 script = ExtResource( 1 )
 

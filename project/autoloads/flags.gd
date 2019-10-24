@@ -18,7 +18,7 @@ var fm_second_cutscene = true
 var fph_first_cutscene = true
 
 # ForestPuzzleBottom
-var wb_puzzle = false
+var wb_puzzle = true
 
 #func _ready():
 #	for entry in get_property_list():

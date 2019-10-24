@@ -2,6 +2,8 @@ extends KinematicBody2D
 
 onready var size
 
+var transition_state_1 = false
+
 signal interaction_finished
 
 func _ready():
@@ -11,10 +13,6 @@ func _ready():
 
 func interact(player):
 	if (!flags.wb_puzzle):
-#		if (player.position.x > self.position.x):
-#			self.set_scale(Vector2(-abs(self.scale.x), self.scale.y))
-#		else:
-#			self.set_scale(Vector2(abs(self.scale.x), self.scale.y))
 		player.disable_movement()
 		$Textbox.prepare_and_emit_text("Mushi", ["Eu não acredito! Eu não acredito que ele esqueceu de tomar o remédio denovo!"])
 		yield($Textbox, "textbox_done")
@@ -44,6 +42,7 @@ func interact(player):
 		if Global.correct_answer:
 			$Textbox.prepare_and_emit_text("Mushi", ["É isso! Vou só adicionar o remédio, e já administro para o Shimmi! Muito obrigado!"])
 			yield($Textbox, "textbox_done")
+			transition_state_1 = true
 			flags.wb_puzzle = true
 		else:
 			$Textbox.prepare_and_emit_text("Mushi", ["Não, não, não!! Foi a medida errada!"])
@@ -51,4 +50,22 @@ func interact(player):
 			$ThoughtBox.prepare_and_emit_text("Shell", ["Realmente... vou tentar novamente depois..."])
 			yield($ThoughtBox, "textbox_done")
 		
+		player.enable_movement()
+	elif (transition_state_1):
+		if (player.position.x > self.position.x):
+			self.set_scale(Vector2(-abs(self.scale.x), self.scale.y))
+		else:
+			self.set_scale(Vector2(abs(self.scale.x), self.scale.y))
+		player.disable_movement()
+		$Textbox.prepare_and_emit_text("Mushi", ["Estou misturando o remédio, logo administro para o Shimmi. Muito obrigado novamente!"])
+		yield($Textbox, "textbox_done")
+		player.enable_movement()
+	else:
+		if (player.position.x > self.position.x):
+			self.set_scale(Vector2(-abs(self.scale.x), self.scale.y))
+		else:
+			self.set_scale(Vector2(abs(self.scale.x), self.scale.y))
+		player.disable_movement()
+		$Textbox.prepare_and_emit_text("Mushi", ["Como você pode ver, o Shimmi está melhor, graças a vocês!"])
+		yield($Textbox, "textbox_done")
 		player.enable_movement()
