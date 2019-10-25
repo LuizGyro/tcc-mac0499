@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/puzzles/rope_horizontal.png" type="Texture" id=1]
 [ext_resource path="res://puzzles/RopePuzzle/BurningRope.gd" type="Script" id=2]
@@ -13,6 +13,11 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ],
 "loop": true,
 "name": "burn",
@@ -21,6 +26,9 @@ animations = [ {
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 20.0
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 5.0
 
 [node name="Line2D" type="Line2D"]
 z_index = 1
@@ -38,8 +46,7 @@ zoom = Vector2( 0.05, 0.05 )
 scale = Vector2( 0.1, 0.1 )
 z_index = 1
 frames = SubResource( 1 )
-animation = "burn"
-frame = 6
+animation = "idle"
 playing = true
 
 [node name="Tween" type="Tween" parent="TopFire"]
@@ -55,13 +62,19 @@ margin_top = -483.0
 margin_right = 20.0
 margin_bottom = 9.0
 
+[node name="Area2D" type="Area2D" parent="TopFire"]
+editor/display_folded = true
+position = Vector2( 0, 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopFire/Area2D"]
+shape = SubResource( 3 )
+
 [node name="BottomFire" type="AnimatedSprite" parent="."]
 position = Vector2( 0, 20 )
 scale = Vector2( 0.1, 0.1 )
 z_index = 1
 frames = SubResource( 1 )
-animation = "burn"
-frame = 5
+animation = "idle"
 playing = true
 
 [node name="Tween" type="Tween" parent="BottomFire"]
@@ -76,5 +89,17 @@ margin_left = -19.0
 margin_right = 21.0
 margin_bottom = 645.0
 
+[node name="Area2D" type="Area2D" parent="BottomFire"]
+position = Vector2( 0, 5 )
+scale = Vector2( 1, 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomFire/Area2D"]
+shape = SubResource( 3 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
 [connection signal="pressed" from="TopFire/Button" to="." method="_on_TopFire_Button_pressed"]
+[connection signal="area_entered" from="TopFire/Area2D" to="." method="_on_Area2D_area_entered"]
 [connection signal="pressed" from="BottomFire/Button" to="." method="_on_BottomFire_Button_pressed"]
