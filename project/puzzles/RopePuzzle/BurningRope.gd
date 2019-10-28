@@ -1,16 +1,24 @@
 extends Line2D
 
+var top_fire_started = false
+var bottom_fire_started = false
 var fire_started = false
 
-var rope_duration = 60
+export (int) var rope_duration = 60
 
 var time = 0
 
 func _ready():
 	$Timer.wait_time = rope_duration
 	$BottomFire.position = get_point_position(1)
+	
+	$TopFire.scale *= self.width / 10
+	$BottomFire.scale *= self.width / 10
 
 func _on_TopFire_Button_pressed():
+	if (top_fire_started):
+		return
+	top_fire_started = true
 	$TopFire.animation = "burn"
 	$TopFire/Tween.interpolate_property($TopFire, "position", $TopFire.position, self.get_point_position(1), rope_duration, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
 	$TopFire/Tween.start()
@@ -19,6 +27,9 @@ func _on_TopFire_Button_pressed():
 		$Timer.start()
 
 func _on_BottomFire_Button_pressed():
+	if (bottom_fire_started):
+		return
+	bottom_fire_started = true
 	$BottomFire.animation = "burn"
 	$BottomFire/Tween.interpolate_property($BottomFire, "position", $BottomFire.position, self.get_point_position(0), rope_duration, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
 	$BottomFire/Tween.start()
@@ -32,3 +43,14 @@ func _on_Area2D_area_entered(area):
 	time = $Timer.wait_time - $Timer.time_left
 	print(time)
 	queue_free()
+
+func get_elapsed_time():
+	return ($Timer.wait_time - $Timer.time_left)
+	
+func disable():
+	$TopFire/Button.hide()
+	$BottomFire/Button.hide()
+
+func enable():
+	$TopFire/Button.show()
+	$BottomFire/Button.show()
