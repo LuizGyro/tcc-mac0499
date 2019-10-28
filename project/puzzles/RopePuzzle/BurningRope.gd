@@ -8,6 +8,8 @@ export (int) var rope_duration = 60
 
 var time = 0
 
+signal rope_ended
+
 func _ready():
 	$Timer.wait_time = rope_duration
 	$BottomFire.position = get_point_position(1)
@@ -41,10 +43,12 @@ func _on_BottomFire_Button_pressed():
 func _on_Area2D_area_entered(area):
 	$Timer.set_paused(true)
 	time = $Timer.wait_time - $Timer.time_left
-	print(time)
+	emit_signal("rope_ended")
 	queue_free()
 
 func get_elapsed_time():
+	if ($Timer.is_stopped()):
+		return 0
 	return ($Timer.wait_time - $Timer.time_left)
 	
 func disable():

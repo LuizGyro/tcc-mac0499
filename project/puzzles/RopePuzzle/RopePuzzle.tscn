@@ -37,17 +37,17 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 57.5, 22.5 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=5]
 size = 32
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 5 )
 
-[sub_resource type="DynamicFont" id=8]
-size = 60
+[sub_resource type="DynamicFont" id=6]
+size = 40
 font_data = ExtResource( 5 )
 
 [node name="RopePuzzle" index="0" instance=ExtResource( 1 )]
@@ -58,7 +58,6 @@ editor/display_folded = true
 layer = 0
 
 [node name="Blur" type="ColorRect" parent="Intro" index="0"]
-visible = false
 material = SubResource( 2 )
 margin_right = 1920.0
 margin_bottom = 1080.0
@@ -120,7 +119,7 @@ margin_bottom = 1020.0
 [node name="SubmitButton" type="TouchScreenButton" parent="BlurZ0/SubmitBox" index="0"]
 position = Vector2( 115, 45 )
 scale = Vector2( 2, 2 )
-shape = SubResource( 6 )
+shape = SubResource( 4 )
 
 [node name="ColorRect" type="ColorRect" parent="BlurZ0/SubmitBox" index="1"]
 margin_right = 230.0
@@ -130,19 +129,21 @@ color = Color( 1, 0, 0, 0.780392 )
 [node name="Label" type="Label" parent="BlurZ0/SubmitBox" index="2"]
 margin_right = 230.0
 margin_bottom = 90.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 text = "Confirmar!"
 align = 1
 valign = 1
 
 [node name="TotalTime" type="Label" parent="." index="5"]
-margin_left = 400.0
-margin_right = 1400.0
-margin_bottom = 103.0
-custom_fonts/font = SubResource( 8 )
+margin_left = 1420.0
+margin_right = 1920.0
+margin_bottom = 153.0
+custom_fonts/font = SubResource( 6 )
 text = "Tempo: 0 minutos"
 align = 1
 valign = 1
+
+[node name="TotalTimer" type="Timer" parent="." index="6"]
 
 [connection signal="pressed" from="BlurZ0/SubmitBox/SubmitButton" to="." method="submit_answer"]
 

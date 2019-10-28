@@ -11,12 +11,36 @@ var total_time = 0
 
 func _ready():
 	disable_parts()
+	set_process(false)
+	
+	$TotalTimer.set_wait_time($Rope1.rope_duration + $Rope2.rope_duration)
+	$TotalTimer.start()
+	$TotalTimer.set_paused(true)
+	$Rope1.connect("rope_ended", self, "pause_total_timer")
+	$Rope2.connect("rope_ended", self, "pause_total_timer")
+	
+	
 	GlobalFade.fade_in()
 	yield(GlobalFade.tween, "tween_completed")
 	$Intro/Introbox.prepare_and_emit_text("", puzzle_intro_text, "pop_in_center", "pop_out")
 	yield($Intro/Introbox, "textbox_done")
 	$Intro/Blur.hide()
+	set_process(true)
 	enable_parts()
+	
+func _process(delta):
+	var rope_number = 0
+	if (self.has_node("Rope1")):
+		rope_number += 1
+		if ($Rope1.fire_started):
+			$TotalTimer.set_paused(false)
+	if (self.has_node("Rope2")):
+		rope_number += 1
+		if ($Rope2.fire_started):
+			$TotalTimer.set_paused(false)
+	
+	total_time = floor($TotalTimer.wait_time - $TotalTimer.time_left)
+	$TotalTime.set_text(str("Tempo: ", total_time, " minutos"))
 
 # Essa função se liga ao SubmitButton, para que transicionemos
 # para a tela em que a solução é entregue. Esta pode ser filha
@@ -48,6 +72,11 @@ func enable_parts():
 	$BlurZ0/SubmitBox/SubmitButton.show()
 	
 func disable_parts():
-	$Rope1.disable()
-	$Rope2.disable()
+	if (self.has_node("Rope1")):
+		$Rope1.disable()
+	if (self.has_node("Rope2")):
+		$Rope2.disable()
 	$BlurZ0/SubmitBox/SubmitButton.hide()
+
+func pause_total_timer():
+	$TotalTimer.set_paused(true)
