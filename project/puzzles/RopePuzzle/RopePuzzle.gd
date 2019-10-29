@@ -3,7 +3,7 @@ extends Control
 # Normalmente, o padrão é false
 var puzzle_solved = false
 
-var puzzle_intro_text = ["PUZZLE TIME BABY!"]
+var puzzle_intro_text = ["Taki gostaria de contar 45 minutos, mas apenas possui duas cordas. Cada corda demora aproximadamente uma hora para ser queimada completamente.", "As cordas possuem espessuras variáveis, e então cada parte das cordas queimam em velocidades diferentes (então cortá-las não é uma opção).", "Para começar a queimar uma corda, basta tocar em uma de suas pontas."]
 
 signal puzzle_solved
 
