@@ -20,6 +20,9 @@ var fph_first_cutscene = true
 # ForestPuzzleBottom
 var wb_puzzle = true
 
+# ForestPuzzleSide
+var br_puzzle = false
+
 #func _ready():
 #	for entry in get_property_list():
 #		if entry.name.find("cutscene") != -1 or entry.name.find("puzzle") != -1:
