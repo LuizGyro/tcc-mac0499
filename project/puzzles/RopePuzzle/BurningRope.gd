@@ -22,7 +22,7 @@ func _on_TopFire_Button_pressed():
 		return
 	top_fire_started = true
 	$TopFire.animation = "burn"
-	$TopFire/Tween.interpolate_property($TopFire, "position", $TopFire.position, self.get_point_position(1), rope_duration, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
+	$TopFire/Tween.interpolate_property($TopFire, "position", $TopFire.position, self.get_point_position(1), rope_duration, Tween.TRANS_SINE, Tween.EASE_OUT_IN)
 	$TopFire/Tween.start()
 	if (!fire_started):
 		fire_started = true
@@ -33,7 +33,7 @@ func _on_BottomFire_Button_pressed():
 		return
 	bottom_fire_started = true
 	$BottomFire.animation = "burn"
-	$BottomFire/Tween.interpolate_property($BottomFire, "position", $BottomFire.position, self.get_point_position(0), rope_duration, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
+	$BottomFire/Tween.interpolate_property($BottomFire, "position", $BottomFire.position, self.get_point_position(0), rope_duration, Tween.TRANS_SINE, Tween.EASE_OUT_IN)
 	$BottomFire/Tween.start()
 	if (!fire_started):
 		fire_started = true
