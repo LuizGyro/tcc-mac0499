@@ -9,6 +9,8 @@ signal puzzle_solved
 
 var total_time = 0
 
+var rope_scene = "res://puzzles/RopePuzzle/BurningRope.tscn"
+
 func _ready():
 	disable_parts()
 	set_process(false)
@@ -80,3 +82,35 @@ func disable_parts():
 
 func pause_total_timer():
 	$TotalTimer.set_paused(true)
+
+func _on_ResetButton_pressed():
+	var or1 = self.get_node("Rope1")
+	var or2 = self.get_node("Rope2")
+	or1.set_name("OldRope1")
+	or1.queue_free()
+	or2.set_name("OldRope2")
+	or2.queue_free()
+	var r_scene = load(rope_scene)
+	# Remake Rope1
+	var r1 = r_scene.instance()
+	r1.position = Vector2(600, 120)
+	r1.width = 200
+	r1.set_point_position(0, Vector2(0, 0))
+	r1.set_point_position(1, Vector2(0, 840))
+	r1.set_name("Rope1")
+	self.add_child(r1)
+	# Remake Rope2
+	var r2 = r_scene.instance()
+	r2.position = Vector2(1200, 120)
+	r2.width = 200
+	r2.set_point_position(0, Vector2(0, 0))
+	r2.set_point_position(1, Vector2(0, 840))
+	r2.set_name("Rope2")
+	self.add_child(r2)
+	
+	$TotalTimer.stop()
+	$TotalTimer.set_wait_time($Rope1.rope_duration + $Rope2.rope_duration)
+	$TotalTimer.start()
+	$TotalTimer.set_paused(true)
+	
+	total_time = 0

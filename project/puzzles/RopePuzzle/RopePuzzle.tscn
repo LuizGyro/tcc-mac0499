@@ -109,7 +109,32 @@ material = SubResource( 2 )
 margin_right = 1920.0
 margin_bottom = 1080.0
 
-[node name="SubmitBox" type="Control" parent="BlurZ0" index="0"]
+[node name="ResetBox" type="Control" parent="BlurZ0" index="0"]
+editor/display_folded = true
+margin_left = 1640.0
+margin_top = 780.0
+margin_right = 1870.0
+margin_bottom = 870.0
+
+[node name="ResetButton" type="TouchScreenButton" parent="BlurZ0/ResetBox" index="0"]
+position = Vector2( 115, 45 )
+scale = Vector2( 2, 2 )
+shape = SubResource( 4 )
+
+[node name="ColorRect" type="ColorRect" parent="BlurZ0/ResetBox" index="1"]
+margin_right = 230.0
+margin_bottom = 90.0
+color = Color( 1, 0.470588, 0, 0.780392 )
+
+[node name="Label" type="Label" parent="BlurZ0/ResetBox" index="2"]
+margin_right = 230.0
+margin_bottom = 90.0
+custom_fonts/font = SubResource( 5 )
+text = "Reiniciar"
+align = 1
+valign = 1
+
+[node name="SubmitBox" type="Control" parent="BlurZ0" index="1"]
 editor/display_folded = true
 margin_left = 1640.0
 margin_top = 930.0
@@ -145,6 +170,7 @@ valign = 1
 
 [node name="TotalTimer" type="Timer" parent="." index="6"]
 
+[connection signal="pressed" from="BlurZ0/ResetBox/ResetButton" to="." method="_on_ResetButton_pressed"]
 [connection signal="pressed" from="BlurZ0/SubmitBox/SubmitButton" to="." method="submit_answer"]
 
 [editable path="Intro/Introbox"]
