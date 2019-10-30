@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://maps/Forest/ForestPuzzleSide.gd" type="Script" id=1]
 [ext_resource path="res://maps/Forest/ForestTileMap.tscn" type="PackedScene" id=2]
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://elements/characters/gasa/Gasa.tscn" type="PackedScene" id=4]
-[ext_resource path="res://maps/General/MapPortal.tscn" type="PackedScene" id=5]
-[ext_resource path="res://ui/Textbox.tscn" type="PackedScene" id=6]
-[ext_resource path="res://elements/characters/mushroom/Taki.tscn" type="PackedScene" id=7]
+[ext_resource path="res://elements/characters/mushroom/Taki.tscn" type="PackedScene" id=5]
+[ext_resource path="res://maps/General/MapPortal.tscn" type="PackedScene" id=6]
+[ext_resource path="res://ui/Textbox.tscn" type="PackedScene" id=7]
+[ext_resource path="res://elements/characters/fairy/Domi.tscn" type="PackedScene" id=8]
 
 [node name="ForestPuzzleSide" type="Node2D"]
 script = ExtResource( 1 )
@@ -43,13 +44,16 @@ limit_bottom = 1750
 [node name="Gasa" parent="." instance=ExtResource( 4 )]
 position = Vector2( -645.084, 1019.28 )
 
+[node name="Taki" parent="." instance=ExtResource( 5 )]
+position = Vector2( -77.4952, 959.805 )
+
 [node name="Spawns" type="Node2D" parent="."]
 editor/display_folded = true
 
 [node name="ForestPuzzleHub" type="Position2D" parent="Spawns"]
 position = Vector2( -700, 1090 )
 
-[node name="MapPortal" parent="." instance=ExtResource( 5 )]
+[node name="MapPortal" parent="." instance=ExtResource( 6 )]
 position = Vector2( -794.668, 1004.84 )
 scale = Vector2( 1, 3 )
 portal_direction = Vector2( -1, 0 )
@@ -59,9 +63,9 @@ destination = "res://maps/Forest/ForestPuzzleHub.tscn"
 editor/display_folded = true
 visible = false
 
-[node name="Textbox" parent="Cutscenes" instance=ExtResource( 6 )]
+[node name="Textbox" parent="Cutscenes" instance=ExtResource( 7 )]
 
-[node name="ThoughtBox" parent="Cutscenes" instance=ExtResource( 6 )]
+[node name="ThoughtBox" parent="Cutscenes" instance=ExtResource( 7 )]
 editor/display_folded = true
 margin_left = 520.772
 margin_top = 1331.98
@@ -86,8 +90,8 @@ custom_colors/font_color = Color( 0.14902, 0.933333, 0.282353, 1 )
 [node name="Elements" type="Node2D" parent="."]
 visible = false
 
-[node name="Taki" parent="." instance=ExtResource( 7 )]
-position = Vector2( -77.4952, 959.805 )
+[node name="Domi" parent="." instance=ExtResource( 8 )]
+position = Vector2( 1148.08, 995.121 )
 
 
 [editable path="Player"]
