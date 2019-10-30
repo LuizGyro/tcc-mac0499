@@ -4,7 +4,7 @@ onready var size
 
 signal interaction_finished
 
-var pl = get_parent().get_node("Player")
+onready var pl = get_parent().get_node("Player")
 
 func _ready():
 	size = $InteractionBox/CollisionShape2D.shape.extents
@@ -12,9 +12,11 @@ func _ready():
 	set_physics_process(true)
 
 func _physics_process(delta):
-	if (pl != null and !$Tween.is_active()):
-		$Tween.interpolate_property(self, "position", self.position, Vector2(self.position.x, pl.position.y), 0.1, Tween.TRANS_ELASTIC, Tween.EASE_OUT)
+	if (pl != null and pl.position.y > 900 and pl.position.y < 1125):
+		$Tween.interpolate_property(self, "position", self.position, Vector2(self.position.x, pl.position.y), 0.8, Tween.TRANS_ELASTIC, Tween.EASE_OUT)
 		$Tween.start()
+	else:
+		$Tween.stop(self)
 
 func interact(player):
 	player.disable_movement()
