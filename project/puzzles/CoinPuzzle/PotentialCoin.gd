@@ -38,8 +38,6 @@ func verify_boundaries():
 		elif area.get_name() == "Out":
 			o = true
 		else:
-			print(area.get_parent().get_name())
-			print(area.get_parent().position)
 			return false
 	
 	if (i and !o):

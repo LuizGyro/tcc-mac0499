@@ -50,6 +50,12 @@ func place_coin(p=null):
 	coin_n += 1
 	$Coins.add_child(new_coin)
 	
+	if (game_ended()):
+		print("Vou acabar!")
+		finish_game()
+		return
+	print("Sai")
+	
 	if (player_turn):
 		player_turn = false
 		cpu_turn()
@@ -61,10 +67,9 @@ func cpu_turn():
 	$ThinkTimer.start()
 	yield($ThinkTimer, "timeout")
 	cpu_check_and_place("random")
-	# If reached here, game has ended
-	# finish_game()
 	
 func cpu_check_and_place(mode):
+	# This check should be inside, to determine p
 	if (mode == "random"):
 		var p
 		var possible = false
@@ -83,6 +88,7 @@ func cpu_check_and_place(mode):
 				possible = true
 		place_coin(p)
 		
+		
 
 func cpu_choose_random():
 	var a = randi() % 1920
@@ -95,8 +101,25 @@ func cpu_choose_random():
 		
 # This function checks table state, to see if there is any space left for
 # further coins. If not, call finish_game.
-func check_state():
-	pass
+func game_ended():
+	print("Entrei")
+	for a in range (480, 1440):
+		for b in range (0, 1000):
+			# Se pontos dentro da mesa, e pode ser uma moeda nova
+			if (pow((960 - a), 2) + pow((540 - b), 2) < pow(385, 2)):
+				var check_n
+				# Now check for existing collisions
+				var p = Vector2(a, b)
+				check_n = 0
+				for coin in $Coins.get_children():
+					# Se a distancia dos raios é maior do que a soma dos raios
+					if (coin.position.distance_to(p) < 140):
+						break
+					else:
+						check_n += 1
+				if (check_n == $Coins.get_child_count()):
+					return false
+	return true
 
 # This function checks the requirements for sucess in the puzzle,
 # and returns true if they are met, and false oherwise
