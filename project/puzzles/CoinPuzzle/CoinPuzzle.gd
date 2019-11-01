@@ -8,7 +8,6 @@ var puzzle_intro_text = ["COIN PUZZLE TIME"]
 signal puzzle_solved
 
 var player_turn = true
-var thinking = false
 
 var coin_scene = "res://puzzles/CoinPuzzle/PuzzleCoin.tscn"
 
@@ -20,22 +19,7 @@ func _ready():
 	$Intro/Introbox.prepare_and_emit_text("", puzzle_intro_text, "pop_in_center", "pop_out")
 	yield($Intro/Introbox, "textbox_done")
 	$Intro/Blur.hide()
-	set_process(true)
 	enable_parts()
-
-func _process(delta):
-	if (player_turn):
-		return
-	elif (!thinking):
-		thinking = true
-		$ThinkTimer.start()
-	else:
-		if $ThinkTimer.time_left == 0:
-			thinking = false
-			# place cpu coin here
-			player_turn = true
-			enable_parts()
-		
 
 func finish_game():
 	disable_parts()
@@ -59,7 +43,31 @@ func place_coin():
 	if (!player_turn):
 		new_coin.get_node("Sprite").set_texture(load("res://assets/puzzles/coins2.png"))
 	$Coins.add_child(new_coin)
-	player_turn = false
+	
+	if (player_turn):
+		player_turn = false
+		cpu_turn()
+	else:
+		player_turn = true
+		enable_parts()
+
+func cpu_turn():
+	$ThinkTimer.start()
+	yield($ThinkTimer, "timeout")
+	for a in range (-960, 960):
+		for b in range (-540, 540):
+			# Se pontos dentro da mesa
+			if (pow((960 - a), 2) + pow((540 - b), 2) < pow(460, 2)):
+				print(str("a:", a, " b: ", b))
+				$PotentialCoin.position = Vector2(a, b)
+				# Se nao tem obstrucoes
+				yield(get_tree(), "physics_frame")
+				if $PotentialCoin.verify_boundaries():
+					print("hey")
+					place_coin()
+					return
+	# If reached here, game has ended
+	# finish_game()
 
 # This function checks table state, to see if there is any space left for
 # further coins. If not, call finish_game.
