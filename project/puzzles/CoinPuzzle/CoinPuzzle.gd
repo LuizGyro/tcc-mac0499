@@ -7,21 +7,38 @@ var puzzle_intro_text = ["COIN PUZZLE TIME"]
 
 signal puzzle_solved
 
+var player_turn = true
+var thinking = false
+
+var coin_scene = "res://puzzles/CoinPuzzle/PuzzleCoin.tscn"
+
 func _ready():
 	disable_parts()
+	$PotentialCoin.connect("coin_placed", self, "place_coin")
 	GlobalFade.fade_in()
 	yield(GlobalFade.tween, "tween_completed")
 	$Intro/Introbox.prepare_and_emit_text("", puzzle_intro_text, "pop_in_center", "pop_out")
 	yield($Intro/Introbox, "textbox_done")
 	$Intro/Blur.hide()
+	set_process(true)
 	enable_parts()
 
-# Essa função se liga ao SubmitButton, para que transicionemos
-# para a tela em que a solução é entregue. Esta pode ser filha
-# desta cena mesmo, por conveniencia.
-func submit_answer():
+func _process(delta):
+	if (player_turn):
+		return
+	elif (!thinking):
+		thinking = true
+		$ThinkTimer.start()
+	else:
+		if $ThinkTimer.time_left == 0:
+			thinking = false
+			# place cpu coin here
+			player_turn = true
+			enable_parts()
+		
+
+func finish_game():
 	disable_parts()
-	$BlurZ0/SubmitBox.hide()
 	check_requirements()
 	# Faz a animação da solução correspodente (correto ou errado)
 	if (puzzle_solved):
@@ -34,18 +51,31 @@ func submit_answer():
 	Global.transition_to_overworld()
 		
 
+func place_coin():
+	disable_parts()
+	var c_scene = load(coin_scene)
+	var new_coin = c_scene.instance()
+	new_coin.position = $PotentialCoin.position
+	if (!player_turn):
+		new_coin.get_node("Sprite").set_texture(load("res://assets/puzzles/coins2.png"))
+	$Coins.add_child(new_coin)
+	player_turn = false
+
+# This function checks table state, to see if there is any space left for
+# further coins. If not, call finish_game.
+func check_state():
+	pass
+
 # This function checks the requirements for sucess in the puzzle,
 # and returns true if they are met, and false oherwise
 func check_requirements():
-	if get_node("5L").contents == 4:
+	if !player_turn:
 		puzzle_solved = true
 		
 func enable_parts():
-	$"5L".active = true
-	$"3L".active = true
-	$BlurZ0/SubmitBox/SubmitButton.show()
+	$PotentialCoin.set_process_input(true)
+	$PotentialCoin.set_physics_process(true)
 	
 func disable_parts():
-	$"5L".active = false
-	$"3L".active = false
-	$BlurZ0/SubmitBox/SubmitButton.hide()
+	$PotentialCoin.set_process_input(false)
+	$PotentialCoin.set_physics_process(false)
