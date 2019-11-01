@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://elements/characters/fairy/Domi.gd" type="Script" id=1]
 [ext_resource path="res://assets/characters/fairy/fairy_sparkless.png" type="Texture" id=2]
 [ext_resource path="res://ui/Textbox.tscn" type="PackedScene" id=3]
+[ext_resource path="res://ui/ChoiceBox.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 30, 30 )
@@ -72,6 +73,8 @@ visible = false
 
 [node name="Text" parent="ThoughtBox/CanvasLayer/Boxes" index="5"]
 custom_colors/font_color = Color( 0.14902, 0.933333, 0.282353, 1 )
+
+[node name="ChoiceBox" parent="." instance=ExtResource( 4 )]
 
 
 [editable path="ThoughtBox"]

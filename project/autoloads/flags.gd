@@ -22,6 +22,7 @@ var wb_puzzle = true
 
 # ForestPuzzleSide
 var br_puzzle = false
+var c_puzzle = false
 
 #func _ready():
 #	for entry in get_property_list():

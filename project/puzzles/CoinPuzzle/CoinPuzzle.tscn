@@ -38,10 +38,10 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="CircleShape2D" id=8]
+[sub_resource type="CircleShape2D" id=4]
 radius = 460.0
 
-[sub_resource type="ConcavePolygonShape2D" id=11]
+[sub_resource type="ConcavePolygonShape2D" id=5]
 segments = PoolVector2Array( -460, 0, -460, 80, -460, 80, -430, 180, -430, 180, -330, 330, -330, 330, -220, 410, -220, 410, -120, 450, -120, 450, 0, 460 )
 
 [node name="CoinPuzzle" index="0" instance=ExtResource( 1 )]
@@ -105,29 +105,29 @@ editor/display_folded = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/In" index="0"]
 position = Vector2( 960, 532 )
-shape = SubResource( 8 )
+shape = SubResource( 4 )
 
 [node name="Out" type="Area2D" parent="Boundaries" index="1"]
 editor/display_folded = true
 position = Vector2( 960, 540 )
 
 [node name="BL" type="CollisionShape2D" parent="Boundaries/Out" index="0"]
-shape = SubResource( 11 )
+shape = SubResource( 5 )
 
 [node name="BR" type="CollisionShape2D" parent="Boundaries/Out" index="1"]
 position = Vector2( 10, 0 )
 scale = Vector2( -1, 1 )
-shape = SubResource( 11 )
+shape = SubResource( 5 )
 
 [node name="TR" type="CollisionShape2D" parent="Boundaries/Out" index="2"]
 position = Vector2( 10, -10 )
 scale = Vector2( -1, -1 )
-shape = SubResource( 11 )
+shape = SubResource( 5 )
 
 [node name="TL" type="CollisionShape2D" parent="Boundaries/Out" index="3"]
 position = Vector2( 0, -10 )
 scale = Vector2( 1, -1 )
-shape = SubResource( 11 )
+shape = SubResource( 5 )
 
 [node name="Coins" type="Node2D" parent="." index="3"]
 

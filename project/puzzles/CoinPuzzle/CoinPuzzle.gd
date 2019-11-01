@@ -50,18 +50,15 @@ func place_coin(p=null):
 	coin_n += 1
 	$Coins.add_child(new_coin)
 	
-	if (game_ended()):
-		print("Vou acabar!")
-		finish_game()
-		return
-	print("Sai")
-	
 	if (player_turn):
 		player_turn = false
 		cpu_turn()
 	else:
 		player_turn = true
 		enable_parts()
+	
+	if (game_ended()):
+		finish_game()
 
 func cpu_turn():
 	$ThinkTimer.start()
@@ -102,7 +99,6 @@ func cpu_choose_random():
 # This function checks table state, to see if there is any space left for
 # further coins. If not, call finish_game.
 func game_ended():
-	print("Entrei")
 	for a in range (480, 1440):
 		for b in range (0, 1000):
 			# Se pontos dentro da mesa, e pode ser uma moeda nova
