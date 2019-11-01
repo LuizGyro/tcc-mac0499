@@ -9,6 +9,7 @@ signal puzzle_solved
 
 var player_turn = true
 
+var coin_n = 1
 var coin_scene = "res://puzzles/CoinPuzzle/PuzzleCoin.tscn"
 
 func _ready():
@@ -35,13 +36,18 @@ func finish_game():
 	Global.transition_to_overworld()
 		
 
-func place_coin():
+func place_coin(p=null):
 	disable_parts()
 	var c_scene = load(coin_scene)
 	var new_coin = c_scene.instance()
-	new_coin.position = $PotentialCoin.position
+	if (p == null):
+		new_coin.position = $PotentialCoin.position
+	else:
+		new_coin.position = p
 	if (!player_turn):
 		new_coin.get_node("Sprite").set_texture(load("res://assets/puzzles/coins2.png"))
+	new_coin.set_name(str(coin_n))
+	coin_n += 1
 	$Coins.add_child(new_coin)
 	
 	if (player_turn):
@@ -54,21 +60,39 @@ func place_coin():
 func cpu_turn():
 	$ThinkTimer.start()
 	yield($ThinkTimer, "timeout")
-	for a in range (-960, 960):
-		for b in range (-540, 540):
-			# Se pontos dentro da mesa
-			if (pow((960 - a), 2) + pow((540 - b), 2) < pow(460, 2)):
-				print(str("a:", a, " b: ", b))
-				$PotentialCoin.position = Vector2(a, b)
-				# Se nao tem obstrucoes
-				yield(get_tree(), "physics_frame")
-				if $PotentialCoin.verify_boundaries():
-					print("hey")
-					place_coin()
-					return
+	cpu_check_and_place("random")
 	# If reached here, game has ended
 	# finish_game()
+	
+func cpu_check_and_place(mode):
+	if (mode == "random"):
+		var p
+		var possible = false
+		var check_n
+		# Now check for existing collisions
+		while (!possible):
+			p = cpu_choose_random()
+			check_n = 0
+			for coin in $Coins.get_children():
+				# Se a distancia dos raios é maior do que a soma dos raios
+				if (coin.position.distance_to(p) < 140):
+					break
+				else:
+					check_n += 1
+			if (check_n == $Coins.get_child_count()):
+				possible = true
+		place_coin(p)
+		
 
+func cpu_choose_random():
+	var a = randi() % 1920
+	var b = randi() % 1080
+	# Big radius (460) minus coin radius (75)
+	while (pow((960 - a), 2) + pow((540 - b), 2) > pow(385, 2)):
+		a = randi() % 1920
+		b = randi() % 1080
+	return Vector2(a, b)
+		
 # This function checks table state, to see if there is any space left for
 # further coins. If not, call finish_game.
 func check_state():

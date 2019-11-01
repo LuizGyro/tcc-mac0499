@@ -3,9 +3,10 @@
 [ext_resource path="res://assets/puzzles/coins.png" type="Texture" id=1]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 15.0
+radius = 14.0
 
 [node name="PuzzleCoin" type="Node2D"]
+editor/display_folded = true
 scale = Vector2( 5, 5 )
 
 [node name="Sprite" type="Sprite" parent="."]
