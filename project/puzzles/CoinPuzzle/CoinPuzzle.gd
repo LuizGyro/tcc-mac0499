@@ -91,7 +91,7 @@ func cpu_choose_random():
 	var a = randi() % 1920
 	var b = randi() % 1080
 	# Big radius (460) minus coin radius (75)
-	while (pow((960 - a), 2) + pow((540 - b), 2) > pow(385, 2)):
+	while (pow((960 - a), 2) + pow((540 - b), 2) > pow(390, 2)):
 		a = randi() % 1920
 		b = randi() % 1080
 	return Vector2(a, b)
@@ -102,7 +102,7 @@ func game_ended():
 	for a in range (480, 1440):
 		for b in range (0, 1000):
 			# Se pontos dentro da mesa, e pode ser uma moeda nova
-			if (pow((960 - a), 2) + pow((540 - b), 2) < pow(385, 2)):
+			if (pow((960 - a), 2) + pow((540 - b), 2) < pow(390, 2)):
 				var check_n
 				# Now check for existing collisions
 				var p = Vector2(a, b)

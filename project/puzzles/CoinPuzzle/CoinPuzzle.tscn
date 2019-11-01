@@ -101,7 +101,6 @@ texture = ExtResource( 4 )
 [node name="Boundaries" type="Node2D" parent="." index="2"]
 
 [node name="In" type="Area2D" parent="Boundaries" index="0"]
-editor/display_folded = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/In" index="0"]
 position = Vector2( 960, 532 )
