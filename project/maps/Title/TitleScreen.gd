@@ -41,6 +41,7 @@ func _on_Continuar_pressed():
 	
 	Global.player_name = savedata.player_name
 	Global.pxp = savedata.pxp
+	Global.plv = savedata.plv
 	
 	var f_i = 0
 	for flag in flags.get_names():

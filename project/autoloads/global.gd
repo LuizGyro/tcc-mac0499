@@ -10,7 +10,12 @@ var correct_answer = false
 # the player submits a wrong answer. This is to discourage guessing, and
 # reward player thought.
 var pxp = 0
+var plv = 0
 var player_name = "Shell"
+
+# This is the max exp of each player level. The min exp of the next level
+# is the max exp o the last lvl. If level is 0, min exp is 0.
+var m_exp = [50, 100, 200]
 
 
 # This function is used to transition into a puzzle scene,

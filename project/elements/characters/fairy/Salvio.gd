@@ -38,6 +38,7 @@ func save_data():
 		control_mode = Global.control_mode,
 		player_name = Global.player_name,
 		pxp = Global.pxp,
+		plv = Global.plv,
 		
 		flags_values = flags.get_current_values()
 		}
