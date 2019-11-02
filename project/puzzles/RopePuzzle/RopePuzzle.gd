@@ -71,7 +71,7 @@ func check_requirements():
 func enable_parts():
 	$Rope1.enable()
 	$Rope2.enable()
-	$BlurZ0/ResetBox/ResetButton.hide()
+	$BlurZ0/ResetBox/ResetButton.show()
 	$BlurZ0/SubmitBox/SubmitButton.show()
 	
 func disable_parts():
@@ -86,6 +86,7 @@ func pause_total_timer():
 	$TotalTimer.set_paused(true)
 
 func _on_ResetButton_pressed():
+	print("oi")
 	var or1 = self.get_node("Rope1")
 	var or2 = self.get_node("Rope2")
 	or1.set_name("OldRope1")
