@@ -83,6 +83,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id=5]
 resource_name = "slide_out"
+length = 1.6
 tracks/0/type = "value"
 tracks/0/path = NodePath("ProgressBar:rect_position")
 tracks/0/interp = 2
@@ -90,7 +91,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
+"times": PoolRealArray( 0.6, 1.6 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1295, 25 ), Vector2( 1295, -400 ) ]
@@ -102,7 +103,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 1 ),
+"times": PoolRealArray( 0.6, 1.6 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( 0, -425 ) ]
@@ -125,9 +126,9 @@ layer = 2
 
 [node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
 margin_left = 1295.0
-margin_top = 25.0
+margin_top = -121.924
 margin_right = 1895.0
-margin_bottom = 125.0
+margin_bottom = -21.9238
 custom_styles/fg = SubResource( 1 )
 custom_styles/bg = SubResource( 2 )
 custom_fonts/font = SubResource( 3 )
@@ -141,8 +142,10 @@ anims/slide_out = SubResource( 5 )
 [node name="Tween" type="Tween" parent="CanvasLayer"]
 
 [node name="LvlBox" type="Control" parent="CanvasLayer"]
+editor/display_folded = true
+margin_top = -146.924
 margin_right = 40.0
-margin_bottom = 40.0
+margin_bottom = -106.924
 
 [node name="LvOut" type="ColorRect" parent="CanvasLayer/LvlBox"]
 margin_left = 1125.0

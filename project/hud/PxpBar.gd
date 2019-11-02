@@ -11,7 +11,8 @@ func _ready():
 
 func _on_ProgressBar_value_changed(value):
 	if value == Global.m_exp[Global.plv]:
-		$CanvasLayer/ProgressBar.set("custom_styles/fg/border_width_right", 10)
+		var pbfg = $CanvasLayer/ProgressBar.get("custom_styles/fg")
+		pbfg.set("border_width_right", 10)
 		# Play level up animation
 		$CanvasLayer/Tween.stop($CanvasLayer/ProgressBar, "value")
 		$CanvasLayer/AnimationPlayer.play("level_up")
@@ -20,7 +21,8 @@ func _on_ProgressBar_value_changed(value):
 		$CanvasLayer/ProgressBar.max_value = Global.m_exp[Global.plv]
 		$CanvasLayer/Tween.resume($CanvasLayer/ProgressBar, "value")
 	else:
-		$CanvasLayer/ProgressBar.set("custom_styles/fg/border_width_right", 0)
+		var pbfg = $CanvasLayer/ProgressBar.get("custom_styles/fg")
+		pbfg.set("border_width_right", 0)
 
 func gain_exp(value):
 	$CanvasLayer/AnimationPlayer.play("slide_in")
