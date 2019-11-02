@@ -40,6 +40,8 @@ func interact(player):
 			if Global.correct_answer:
 				$Textbox.prepare_and_emit_text("Taki", ["Muito obrigada! Agora que esperamos o tempo correto das cordas queimarem, ele já deveria estar aqui! Será que aconteceu algo...?"])
 				yield($Textbox, "textbox_done")
+				PxpBar.gain_exp(15)
+				yield(PxpBar, "exp_done")
 				flags.br_puzzle = true
 			else:
 				$Textbox.prepare_and_emit_text("Gasa", [str("Não, ", Global.player_name, ", acho que não é este o tempo que estamos procurando... vamos tentar novamente depois.")])

@@ -42,6 +42,8 @@ func interact(player):
 		if Global.correct_answer:
 			$Textbox.prepare_and_emit_text("Mushi", ["É isso! Vou só adicionar o remédio, e já administro para o Shimmi! Muito obrigado!"])
 			yield($Textbox, "textbox_done")
+			PxpBar.gain_exp(15)
+			yield(PxpBar, "exp_done")
 			transition_state_1 = true
 			flags.wb_puzzle = true
 		else:

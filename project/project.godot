@@ -26,6 +26,7 @@ VirtualGamepad="*res://hud/VirtualGamepad.tscn"
 flags="*res://autoloads/flags.gd"
 GlobalFade="*res://hud/GlobalFade.tscn"
 SoundPlayers="*res://autoloads/SoundPlayers.tscn"
+PxpBar="*res://hud/PxpBar.tscn"
 
 [display]
 

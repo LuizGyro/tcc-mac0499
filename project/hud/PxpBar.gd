@@ -1,13 +1,12 @@
 extends Control
 
+signal exp_done
+
 func _ready():
 	if Global.plv != 0:
 		$CanvasLayer/ProgressBar.min_value = Global.m_exp[Global.plv - 1]
 		$CanvasLayer/ProgressBar.max_value = Global.m_exp[Global.plv]
 	$CanvasLayer/LvlBox/Label.set_text(str("Lv. ", Global.plv))
-	
-	#test
-	gain_exp(75)
 
 func _on_ProgressBar_value_changed(value):
 	if value == Global.m_exp[Global.plv]:
@@ -33,6 +32,7 @@ func gain_exp(value):
 	Global.pxp += value
 	$CanvasLayer/AnimationPlayer.play("slide_out")
 	yield($CanvasLayer/AnimationPlayer, "animation_finished")
+	emit_signal("exp_done")
 
 func update_level():
 	Global.plv += 1
