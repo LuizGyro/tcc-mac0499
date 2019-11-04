@@ -28,7 +28,14 @@ func _ready():
 	yield($Intro/Introbox, "textbox_done")
 	$Intro/Blur.hide()
 	set_process(true)
+	set_physics_process(true)
 	enable_parts()
+
+func _physics_process(delta):
+	if !(self.has_node("Rope1")) and !(self.has_node("Rope2")):
+		$BlurZ0/SubmitBox.show()
+	else:
+		$BlurZ0/SubmitBox.hide()
 	
 func _process(delta):
 	var rope_number = 0
@@ -86,13 +93,14 @@ func pause_total_timer():
 	$TotalTimer.set_paused(true)
 
 func _on_ResetButton_pressed():
-	print("oi")
-	var or1 = self.get_node("Rope1")
-	var or2 = self.get_node("Rope2")
-	or1.set_name("OldRope1")
-	or1.queue_free()
-	or2.set_name("OldRope2")
-	or2.queue_free()
+	if (self.has_node("Rope1")):
+		var or1 = self.get_node("Rope1")
+		or1.set_name("OldRope1")
+		or1.queue_free()
+	if (self.has_node("Rope2")):
+		var or2 = self.get_node("Rope2")
+		or2.set_name("OldRope2")
+		or2.queue_free()
 	var r_scene = load(rope_scene)
 	# Remake Rope1
 	var r1 = r_scene.instance()
