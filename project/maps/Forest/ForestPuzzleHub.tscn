@@ -52,7 +52,6 @@ z_index = 0
 
 [node name="Sprite" parent="Duco" index="0"]
 animation = "idle"
-frame = 3
 
 [node name="Spawns" type="Node2D" parent="."]
 editor/display_folded = true

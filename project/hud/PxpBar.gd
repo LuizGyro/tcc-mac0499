@@ -6,6 +6,7 @@ func _ready():
 	if Global.plv != 0:
 		$CanvasLayer/ProgressBar.min_value = Global.m_exp[Global.plv - 1]
 		$CanvasLayer/ProgressBar.max_value = Global.m_exp[Global.plv]
+	$CanvasLayer/ProgressBar.value = Global.pxp
 	$CanvasLayer/LvlBox/Label.set_text(str("Lv. ", Global.plv))
 
 func _on_ProgressBar_value_changed(value):

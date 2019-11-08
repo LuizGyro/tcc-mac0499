@@ -7,7 +7,7 @@ const intro_text = ["Você se lembra?",
 					"Você se lembra de algo?",
 					"Você se lembra quem você é?",
 					"E, acima de tudo...",
-					"Você se lembra quem você era?"]
+					"Você se lembra quem você costumava ser?"]
 
 func _ready():
 	VirtualGamepad.disable()

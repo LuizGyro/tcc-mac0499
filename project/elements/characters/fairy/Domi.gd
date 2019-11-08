@@ -43,7 +43,7 @@ func interact(player):
 		yield(PxpBar, "exp_done")
 		# Check plv to determine dialog (if demo ended, or not yet)
 		if (Global.plv >= 1):
-			$Textbox.prepare_and_emit_text("Domi", ["Estou convencido! Você pode passar... é o que eu diria, mas infelizmente não tem nada depois daqui. A você que jogou até aqui, muito obrigado por seu tempo! Pode salvar seu progresso, e ficar a vontade. Obrigado, novamente!"], "pop_in", "slide_out")
+			$Textbox.prepare_and_emit_text("Domi", ["Estou convencido! Você pode passar... é o que eu diria, mas infelizmente não tem nada depois daqui. A você que jogou até aqui, muito obrigado por seu tempo!", "Pode salvar seu progresso, e ficar a vontade. Obrigado, novamente!"], "pop_in", "slide_out")
 			yield($Textbox, "textbox_done")
 		else:
 			$Textbox.prepare_and_emit_text("Domi", ["Mas... ainda não estou convencido. Converse um pouco mais com as pessoas, se familiarize com o ambiente mais. Depois, nós conversamos novamente."], "pop_in", "slide_out")
