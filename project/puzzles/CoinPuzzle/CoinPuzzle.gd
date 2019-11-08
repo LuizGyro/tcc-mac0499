@@ -3,7 +3,7 @@ extends Control
 # Normalmente, o padrão é false
 var puzzle_solved = false
 
-var puzzle_intro_text = ["Convença Domi que você é capaz de vencê-lo em seu próprio jogo.", "O jogo consiste em colocar moedas na mesa. O primeiro a NÃO conseguir colocar uma moeda, perde!", "Aperte e segure em uma posição desejada para ver se é possível colocar uma moeda nela.", "Caso seja possível, uma projeção da moeda aparecerá para como indicação."]
+var puzzle_intro_text = ["Convença Domi que você é capaz de vencê-lo em seu próprio jogo! O jogo consiste em colocar moedas na mesa. O primeiro a NÃO conseguir colocar uma moeda, perde!", "Aperte e segure em uma posição desejada para ver se é possível colocar uma moeda nela. Caso seja possível, uma projeção da moeda aparecerá para como indicação."]
 
 signal puzzle_solved
 
