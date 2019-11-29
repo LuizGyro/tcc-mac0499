@@ -42,8 +42,7 @@ func _ready():
 		$Cutscene/Timer.start()
 		yield($Cutscene/Timer, "timeout")
 		$Player/Sprite._set_playing(true)
-		SoundPlayers.get_node("BGM").stream = load("res://assets/placeholder/Final Fantasy VI_ Awakening Extended.ogg")
-		SoundPlayers.get_node("BGM").play()
+#		SoundPlayers.get_node("BGM").play()
 		$Player.enable_movement()
 		flags.fw_first_cutscene = true
 	elif (source_name == "ForestMain"):
@@ -68,7 +67,7 @@ func _on_T1_body_entered(body):
 		if (body.get_name().to_lower() == "player"):
 			body.disable_movement()
 			body.get_node("Sprite").set_animation("idle")
-			SoundPlayers.get_node("BGM").stop()
+#			SoundPlayers.get_node("BGM").stop()
 			$Cutscene/Textbox.prepare_and_emit_text("???", second_cutscene_dialog_1)
 			yield($Cutscene/Textbox, "textbox_done")
 			$Player/AnimatedLabel/AnimationPlayer.play("?")
@@ -91,7 +90,7 @@ func _on_T1_body_entered(body):
 				choice = yield($Cutscene/ChoiceBox, "choicebox_done")
 			$Cutscene/Textbox.prepare_and_emit_text("Gasa", second_cutscene_option_1)
 			yield($Cutscene/Textbox, "textbox_done")
-			SoundPlayers.get_node("BGM").play()
+#			SoundPlayers.get_node("BGM").play()
 			$Player.enable_movement()
 			$Gasa.active = true
 			flags.fw_second_cutscene = true
